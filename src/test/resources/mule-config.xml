@@ -31,4 +31,10 @@
         <protobuf:parse-proto protoBufClass="org.mule.module.protocol.generated.Packet"/>
     </flow>
 
+    <flow name="timeFilter">
+        <protobuf:parse-proto protoBufClass="org.mule.module.protocol.generated.Packet"/>
+        <protobuf:time-filter dateTime="#[payload.dateTime]" maxSeconds="10"/>
+        <set-payload value="VALID"/>
+    </flow>
+
 </mule>

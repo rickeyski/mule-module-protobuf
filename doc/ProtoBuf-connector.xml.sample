@@ -1,3 +1,6 @@
 <!-- BEGIN_INCLUDE(protobuf:parse-proto) -->
     <protobuf:parse-proto protoBufClass="org.mule.module.protocol.generated.Packet"/>
 <!-- END_INCLUDE(protobuf:parse-proto) -->
+<!-- BEGIN_INCLUDE(protobuf:time-filter) -->
+    <protobuf:time-filter dateTime="#[payload.dateTime]" maxSeconds="20"/>
+<!-- END_INCLUDE(protobuf:time-filter) -->

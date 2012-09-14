@@ -14,13 +14,19 @@ import org.mule.api.MuleContext;
 import org.mule.api.annotations.Module;
 import org.mule.api.annotations.Processor;
 import org.mule.api.annotations.TransformerResolver;
+import org.mule.api.annotations.param.Default;
+import org.mule.api.annotations.param.Optional;
 import org.mule.api.annotations.param.Payload;
+import org.mule.api.callback.SourceCallback;
 import org.mule.api.transformer.DataType;
 
 import com.google.protobuf.GeneratedMessage;
 
 import java.io.InputStream;
 import java.lang.reflect.Method;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Protocol Buffer Module
@@ -29,6 +35,8 @@ import java.lang.reflect.Method;
  */
 @Module(name="protobuf", schemaVersion="1.0-SNAPSHOT")
 public class ProtoBufModule {
+
+    protected static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
 
     /**
      * Parses the payload to build the specified Protocol Buffer class object
@@ -57,6 +65,28 @@ public class ProtoBufModule {
     }
 
     /**
+     * Filters expired messages according to maximum seconds allowed
+     *
+     * <p/>
+     * {@sample.xml ../../../doc/ProtoBuf-connector.xml.sample protobuf:time-filter}
+     *
+     * @param dateTime The time of the message
+     * @param maxSeconds The maximum amount of seconds until a message is considered to be expired
+     * @param afterChain the after chain
+     * @return the after chain process result
+     * @throws Exception if an exception occurs
+     */
+    @Processor(intercepting = true)
+    public Object timeFilter(String dateTime, @Optional @Default("30") int maxSeconds,  SourceCallback afterChain) throws Exception {
+        long currentTime = System.currentTimeMillis();
+        Date date = DATE_FORMAT.parse(dateTime);
+        if(((currentTime - date.getTime())) < (maxSeconds*1000)) {
+            return afterChain.process();
+        }
+        return null;
+    }
+
+    /**
      *
      * Transformer Resolver to handle Protocol Buffer types
      *
@@ -70,13 +100,13 @@ public class ProtoBufModule {
     public static org.mule.api.transformer.Transformer ProtobufTransformerResolver(DataType source, DataType result, MuleContext muleContext) throws Exception {
         org.mule.api.transformer.Transformer t = null;
 
-        if(source.getType().getSuperclass().equals(GeneratedMessage.class)) {
+        if(isProtobufClass(source.getType())) {
             if(result.getType().equals(InputStream.class)) {
                 t = new ProtobufToInputStream();
             } else if(result.getType().equals(byte[].class)) {
                 t = new ProtobufToByteArray();
             }
-        } else if(result.getType().getSuperclass().equals(GeneratedMessage.class)) {
+        } else if(isProtobufClass(result.getType())) {
             if(source.getType().equals(InputStream.class) || source.getType().equals(byte[].class)) {
                 t = new ObjectToProtobuf();
                 t.setReturnDataType(result);
@@ -90,35 +120,8 @@ public class ProtoBufModule {
         return t;
     }
 
-    //@Transformer (sourceTypes = {Packet.class})
-    //public static byte[] PacketToByteArray(Packet packet) {
-    //    if(packet != null) {
-    //        return packet.toByteArray();
-    //    }
-    //    return null;
-    //}
-    //
-    //@Transformer (sourceTypes = {byte[].class})
-    //public static Packet ByteArrayToPacket(byte[] byteArray) throws Exception {
-    //    if(byteArray != null) {
-    //        return Packet.parseFrom(byteArray);
-    //    }
-    //    return null;
-    //}
-    //
-    //@Transformer (sourceTypes = {InputStream.class})
-    //public static Packet InputStreamToPacket(InputStream input) throws Exception {
-    //    if(input != null) {
-    //        return Packet.parseFrom(input);
-    //    }
-    //    return null;
-    //}
-    //
-    //@Transformer (sourceTypes = {Packet.class})
-    //public static InputStream PacketToInputStream(Packet packet) {
-    //    if(packet != null) {
-    //        return new ByteArrayInputStream(packet.toByteArray());
-    //    }
-    //    return null;
-    //}
+    private static boolean isProtobufClass(Class clazz) {
+        return clazz.getSuperclass() != null && clazz.getSuperclass().equals(GeneratedMessage.class);
+    }
+
 }

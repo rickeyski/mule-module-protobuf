@@ -18,21 +18,25 @@ import org.mule.construct.Flow;
 import org.mule.module.protocol.generated.Packet;
 import org.mule.tck.junit4.FunctionalTestCase;
 import org.mule.transformer.types.DataTypeFactory;
+import org.mule.transport.NullPayload;
 
 
 import java.io.InputStream;
-import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 public class ProtoModuleTest extends FunctionalTestCase {
 
     private static final String EMPTY_PAYLOAD = "";
+    private static final String VALID_MESSAGE = "VALID";
 
     @Override
     protected String getConfigResources() {
@@ -41,8 +45,7 @@ public class ProtoModuleTest extends FunctionalTestCase {
 
     @Test
     public void testParseProto() throws Exception {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
-        Packet packet = Packet.newBuilder().setMessage(TEST_MESSAGE).setDateTime(dateFormat.format(new Date())).build();
+        Packet packet = Packet.newBuilder().setMessage(TEST_MESSAGE).setDateTime(ProtoBufModule.DATE_FORMAT.format(new Date())).build();
         runFlowWithPayload("parseProto", packet, packet.toByteArray());
     }
 
@@ -54,6 +57,21 @@ public class ProtoModuleTest extends FunctionalTestCase {
 
         Transformer transformer = muleContext.getRegistry().lookupTransformer(DataTypeFactory.create(InputStream.class), DataTypeFactory.create(Packet.class));
         assertTrue(transformer instanceof ObjectToProtobuf);
+    }
+
+    @Test
+    public void testTimeFilter() throws Exception {
+        Packet packet = Packet.newBuilder().setMessage(TEST_MESSAGE).setDateTime(ProtoBufModule.DATE_FORMAT.format(new Date())).build();
+        runFlowWithPayload("timeFilter", VALID_MESSAGE, packet.toByteArray());
+    }
+
+    @Test
+    public void testTimeFilterExpired() throws Exception {
+        Calendar calendar = GregorianCalendar.getInstance();
+        calendar.set(Calendar.HOUR, -1);
+        Packet packet = Packet.newBuilder().setMessage(TEST_MESSAGE).setDateTime(ProtoBufModule.DATE_FORMAT.format(calendar.getTime())).build();
+        MuleEvent response = runFlowWithPayload("timeFilter", packet.toByteArray());
+        assertTrue(response.getMessage().getPayload() instanceof NullPayload);
     }
 
     private boolean containsTransformerResolver(List<TransformerResolver> transformerResolvers) {
@@ -80,8 +98,7 @@ public class ProtoModuleTest extends FunctionalTestCase {
         return (Flow) muleContext.getRegistry().lookupFlowConstruct(name);
     }
 
-    protected MuleEvent runFlow(String flowName) throws Exception {
-        String payload = EMPTY_PAYLOAD;
+    protected MuleEvent runFlowWithPayload(String flowName, Object payload) throws Exception {
         Flow flow = lookupFlowConstruct(flowName);
         MuleEvent event = getTestEvent(payload);
         MuleEvent responseEvent = flow.process(event);
