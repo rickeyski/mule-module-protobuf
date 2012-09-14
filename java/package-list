@@ -1,0 +1,9 @@
+org.mule.module.protobuf
+org.mule.module.protobuf.adapters
+org.mule.module.protobuf.agents
+org.mule.module.protobuf.config
+org.mule.module.protobuf.process
+org.mule.module.protobuf.processors
+org.mule.module.protobuf.transformerResolvers
+org.mule.module.protocol.generated
+
