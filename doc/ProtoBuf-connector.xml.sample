@@ -1,0 +1,3 @@
+<!-- BEGIN_INCLUDE(protobuf:parse-proto) -->
+    <protobuf:parse-proto protoBufClass="org.mule.module.protocol.generated.Packet"/>
+<!-- END_INCLUDE(protobuf:parse-proto) -->

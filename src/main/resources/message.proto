@@ -1,0 +1,16 @@
+option java_package = "org.mule.module.protocol.generated";
+
+option optimize_for = SPEED;
+
+option java_multiple_files = true;
+
+option java_generate_equals_and_hash = true;
+
+// base message, what flows in and out are Packets
+message Packet {
+    required string dateTime = 1;
+    required string message = 2;
+}
+
+
+
