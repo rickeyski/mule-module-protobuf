@@ -304,6 +304,19 @@ Summary:
   </td></tr>
 
 
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../mule/protobuf-config.html#time-filter">&lt;protobuf:time-filter&gt;</a></nobr>
+        
+        <div class="jd-descrdiv">Filters expired messages according to maximum seconds allowed
+
+ <p/>
+ </div>
+        
+  </td></tr>
+
+
 
     
     
@@ -441,6 +454,112 @@ similar to the following:</p>
   </div>
     
   
+
+    </div>
+</div>
+
+
+<A NAME="time-filter"></A>
+
+<div class="jd-details api apilevel-">
+    <h4 class="jd-details-title">
+      <span class="sympad">&lt;protobuf:time-filter&gt;</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Filters expired messages according to maximum seconds allowed
+
+ <p/>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;protobuf:time-filter dateTime="#[payload.dateTime]" maxSeconds="20"/&gt;</pre></div></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Attributes</h5>
+
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th><th>Java Type</th><th>MIME Type</th><th>Encoding</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol"></td>
+        </tr>
+          
+          
+                
+                    <tr class=" api apilevel-" >
+                        <td class="jd-linkcol"><nobr>dateTime</nobr></td>
+                        <td class="jd-descrcol"></td>
+                        <td class="jd-descrcol">The time of the message</td>
+                        <td class="jd-descrcol">String</td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                
+                
+          
+                
+                    <tr class="alt-color api apilevel-" >
+                        <td class="jd-linkcol"><nobr>maxSeconds</nobr></td>
+                        <td class="jd-descrcol">30</td>
+                        <td class="jd-descrcol"><i>Optional.&nbsp;</i>The maximum amount of seconds until a message is considered to be expired</td>
+                        <td class="jd-descrcol">int</td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol"></td>
+                    </tr>
+                
+                
+          
+                
+                    <tr class=" api apilevel-" >
+                        <td class="jd-linkcol"><nobr>afterChain</nobr></td>
+                        <td class="jd-descrcol"></td>
+                        <td class="jd-descrcol">The after chain</td>
+                        <td class="jd-descrcol">SourceCallback</td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol"></td>
+                    </tr>
+                
+                
+          
+          
+          
+        </table>
+  </div>
+  
+  
+      <div class="jd-tagdata">
+         <h5 class="jd-tagtitle">Returns</h5>
+         <table id="lconfig" class="jd-sumtable">
+             <tr>
+                <th>Return Type</th>
+                <th>Description</th>
+             </tr>
+             <tr>
+                <td class="jd-descrcol">Object</td>
+                <td class="jd-descrcol">the after chain process result</td>
+             </tr>
+         </table>
+  </div>
+    
+  
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Exception Payloads</h5>
+      <table class="jd-sumtable">
+        <tr><th>Payload Class</th><th>Description</th></tr>
+        
+        <tr>
+            <td>Exception</td>
+            <td>if an exception occurs
+</td>
+        </tr>
+      </table>
+  </div>
 
     </div>
 </div>
