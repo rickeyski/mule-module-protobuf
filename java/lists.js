@@ -45,7 +45,6 @@ var DATA = [
       { id:43, label:"org.mule.module.protocol.generated.Packet.Builder", link:"java/org/mule/module/protocol/generated/Packet.Builder.html", type:"class" },
       { id:44, label:"org.mule.module.protocol.generated.PacketOrBuilder", link:"java/org/mule/module/protocol/generated/PacketOrBuilder.html", type:"class" },
       { id:45, label:"serialize-to-byte-array", link:"mule/protobuf-config.html#serialize-to-byte-array", type:"method" },
-      { id:46, label:"serialize-to-input-stream", link:"mule/protobuf-config.html#serialize-to-input-stream", type:"method" },
-      { id:47, label:"time-filter", link:"mule/protobuf-config.html#time-filter", type:"method" }
+      { id:46, label:"serialize-to-input-stream", link:"mule/protobuf-config.html#serialize-to-input-stream", type:"method" }
 
     ];
