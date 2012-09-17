@@ -15,10 +15,7 @@ import org.mule.api.annotations.Module;
 import org.mule.api.annotations.Processor;
 import org.mule.api.annotations.Transformer;
 import org.mule.api.annotations.TransformerResolver;
-import org.mule.api.annotations.param.Default;
-import org.mule.api.annotations.param.Optional;
 import org.mule.api.annotations.param.Payload;
-import org.mule.api.callback.SourceCallback;
 import org.mule.api.transformer.DataType;
 
 import com.google.protobuf.GeneratedMessage;
@@ -28,7 +25,6 @@ import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * Protocol Buffer Module
@@ -41,8 +37,10 @@ public class ProtoBufModule {
     protected static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
 
     /**
-     * Parses the payload to build the specified Protocol Buffer class object. Accepted payload types are InputStream or
+     * Parses the payload to build the specified Protocol Buffer object. Accepted payload types are InputStream or
      * byte[].
+     *
+     * The provided Class needs to be a Protocol Buffer class in order to parse the input.
      *
      * <p/>
      * {@sample.xml ../../../doc/Protobuf-module.xml.sample protobuf:deserialize}
@@ -68,7 +66,7 @@ public class ProtoBufModule {
     }
 
     /**
-     * Serializes a Protocol Buffer instance into an InputStream
+     * Serializes a Protocol Buffer instance into an InputStream. The input must be an instance of GeneratedMessage.
      *
      * <p/>
      * {@sample.xml ../../../doc/Protobuf-module.xml.sample protobuf:serialize-to-input-stream}
@@ -85,7 +83,7 @@ public class ProtoBufModule {
     }
 
     /**
-     * Serializes a Protocol Buffer instance into a Byte Array
+     * Serializes a Protocol Buffer instance into a Byte Array. The input must be an instance of GeneratedMessage.
      *
      * <p/>
      * {@sample.xml ../../../doc/Protobuf-module.xml.sample protobuf:serialize-to-byte-array}
