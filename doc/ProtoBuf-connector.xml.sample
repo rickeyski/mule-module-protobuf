@@ -1,6 +1,12 @@
-<!-- BEGIN_INCLUDE(protobuf:parse-proto) -->
-    <protobuf:parse-proto protoBufClass="org.mule.module.protocol.generated.Packet"/>
-<!-- END_INCLUDE(protobuf:parse-proto) -->
+<!-- BEGIN_INCLUDE(protobuf:to-protobuf-transformer) -->
+    <protobuf:to-protobuf-transformer protobufClass="org.mule.module.protocol.generated.Packet"/>
+<!-- END_INCLUDE(protobuf:to-protobuf-transformer) -->
 <!-- BEGIN_INCLUDE(protobuf:time-filter) -->
     <protobuf:time-filter dateTime="#[payload.dateTime]" maxSeconds="20"/>
 <!-- END_INCLUDE(protobuf:time-filter) -->
+<!-- BEGIN_INCLUDE(protobuf:protobuf-to-input-stream-transformer) -->
+    <protobuf:protobuf-to-input-stream-transformer />
+<!-- END_INCLUDE(protobuf:protobuf-to-input-stream-transformer) -->
+<!-- BEGIN_INCLUDE(protobuf:protobuf-to-byte-array-transformer) -->
+    <protobuf:protobuf-to-byte-array-transformer />
+<!-- END_INCLUDE(protobuf:protobuf-to-byte-array-transformer) -->

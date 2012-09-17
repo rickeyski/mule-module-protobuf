@@ -13,6 +13,7 @@ package org.mule.module.protobuf;
 import org.mule.api.MuleContext;
 import org.mule.api.annotations.Module;
 import org.mule.api.annotations.Processor;
+import org.mule.api.annotations.Transformer;
 import org.mule.api.annotations.TransformerResolver;
 import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.Optional;
@@ -22,6 +23,7 @@ import org.mule.api.transformer.DataType;
 
 import com.google.protobuf.GeneratedMessage;
 
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.text.DateFormat;
@@ -39,21 +41,22 @@ public class ProtoBufModule {
     protected static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
 
     /**
-     * Parses the payload to build the specified Protocol Buffer class object
+     * Parses the payload to build the specified Protocol Buffer class object. Accepted payload types are InputStream or
+     * byte[].
      *
      * <p/>
-     * {@sample.xml ../../../doc/ProtoBuf-connector.xml.sample protobuf:parse-proto}
+     * {@sample.xml ../../../doc/ProtoBuf-connector.xml.sample protobuf:to-protobuf-transformer}
      *
      *
      * @param payload Payload to process
-     * @param protoBufClass Name of protocol buffer class
+     * @param protobufClass Name of protocol buffer class
      * @return an instance of the specified class built from the incoming payload
      */
     @Processor
-    public Object parseProto(@Payload Object payload, String protoBufClass) {
+    public Object toProtobufTransformer(@Payload Object payload, String protobufClass) {
         if(payload instanceof InputStream || payload instanceof byte[]) {
             try {
-                Class clazz = Class.forName(protoBufClass);
+                Class clazz = Class.forName(protobufClass);
                 Method parseFromMethod = clazz.getDeclaredMethod("parseFrom", payload.getClass());
                 Object protobufResult = parseFromMethod.invoke(null, payload);
                 return protobufResult;
@@ -62,6 +65,40 @@ public class ProtoBufModule {
             }
         }
         return payload;
+    }
+
+    /**
+     * Serializes a Protocol Buffer instance into an InputStream
+     *
+     * <p/>
+     * {@sample.xml ../../../doc/ProtoBuf-connector.xml.sample protobuf:protobuf-to-input-stream-transformer}
+     *
+     * @param protobuf the Protocol Buffer object to transform
+     * @return an InputStream representation of the given object
+     */
+    @Transformer(sourceTypes = Object.class)
+    public static InputStream protobufToInputStreamTransformer(Object protobuf) {
+        if(protobuf != null && protobuf instanceof GeneratedMessage) {
+            return new ByteArrayInputStream(((GeneratedMessage)protobuf).toByteArray());
+        }
+        return null;
+    }
+
+    /**
+     * Serialized a Protocol Buffer instance into a Byte Array
+     *
+     * <p/>
+     * {@sample.xml ../../../doc/ProtoBuf-connector.xml.sample protobuf:protobuf-to-byte-array-transformer}
+     *
+     * @param protobuf the Protocol Buffer object to transform
+     * @return a byte array representation of the given object
+     */
+    @Transformer (sourceTypes = Object.class)
+    public static byte[] protobufToByteArrayTransformer(Object protobuf) {
+        if(protobuf != null && protobuf instanceof GeneratedMessage) {
+            return ((GeneratedMessage)protobuf).toByteArray();
+        }
+        return null;
     }
 
     /**

@@ -30,12 +30,10 @@ import java.util.List;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 public class ProtoModuleTest extends FunctionalTestCase {
 
-    private static final String EMPTY_PAYLOAD = "";
     private static final String VALID_MESSAGE = "VALID";
 
     @Override
@@ -44,9 +42,9 @@ public class ProtoModuleTest extends FunctionalTestCase {
     }
 
     @Test
-    public void testParseProto() throws Exception {
+    public void testToProtobufTransformer() throws Exception {
         Packet packet = Packet.newBuilder().setMessage(TEST_MESSAGE).setDateTime(ProtoBufModule.DATE_FORMAT.format(new Date())).build();
-        runFlowWithPayload("parseProto", packet, packet.toByteArray());
+        runFlowWithPayload("toProtobufTransformer", packet, packet.toByteArray());
     }
 
     @Test
@@ -72,6 +70,20 @@ public class ProtoModuleTest extends FunctionalTestCase {
         Packet packet = Packet.newBuilder().setMessage(TEST_MESSAGE).setDateTime(ProtoBufModule.DATE_FORMAT.format(calendar.getTime())).build();
         MuleEvent response = runFlowWithPayload("timeFilter", packet.toByteArray());
         assertTrue(response.getMessage().getPayload() instanceof NullPayload);
+    }
+
+    @Test
+    public void testProtobufToInputStreamTransformer() throws Exception {
+        Packet packet = Packet.newBuilder().setMessage(TEST_MESSAGE).setDateTime(ProtoBufModule.DATE_FORMAT.format(new Date())).build();
+        MuleEvent response = runFlowWithPayload("protobufToInputStream", packet);
+        assertEquals(packet, Packet.parseFrom((InputStream) response.getMessage().getPayload()));
+    }
+
+    @Test
+    public void testProtobufToByteArrayTransformer() throws Exception {
+        Packet packet = Packet.newBuilder().setMessage(TEST_MESSAGE).setDateTime(ProtoBufModule.DATE_FORMAT.format(new Date())).build();
+        MuleEvent response = runFlowWithPayload("protobufToByteArray", packet);
+        assertEquals(packet, Packet.parseFrom((byte[]) response.getMessage().getPayload()));
     }
 
     private boolean containsTransformerResolver(List<TransformerResolver> transformerResolvers) {
