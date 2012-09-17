@@ -45,7 +45,7 @@ public class ProtoBufModule {
      * byte[].
      *
      * <p/>
-     * {@sample.xml ../../../doc/ProtoBuf-connector.xml.sample protobuf:to-protobuf-transformer}
+     * {@sample.xml ../../../doc/Protobuf-module.xml.sample protobuf:deserialize}
      *
      *
      * @param payload Payload to process
@@ -53,7 +53,7 @@ public class ProtoBufModule {
      * @return an instance of the specified class built from the incoming payload
      */
     @Processor
-    public Object toProtobufTransformer(@Payload Object payload, String protobufClass) {
+    public Object deserialize(@Payload Object payload, String protobufClass) {
         if(payload instanceof InputStream || payload instanceof byte[]) {
             try {
                 Class clazz = Class.forName(protobufClass);
@@ -71,13 +71,13 @@ public class ProtoBufModule {
      * Serializes a Protocol Buffer instance into an InputStream
      *
      * <p/>
-     * {@sample.xml ../../../doc/ProtoBuf-connector.xml.sample protobuf:protobuf-to-input-stream-transformer}
+     * {@sample.xml ../../../doc/Protobuf-module.xml.sample protobuf:serialize-to-input-stream}
      *
      * @param protobuf the Protocol Buffer object to transform
      * @return an InputStream representation of the given object
      */
     @Transformer(sourceTypes = Object.class)
-    public static InputStream protobufToInputStreamTransformer(Object protobuf) {
+    public static InputStream serializeToInputStream(Object protobuf) {
         if(protobuf != null && protobuf instanceof GeneratedMessage) {
             return new ByteArrayInputStream(((GeneratedMessage)protobuf).toByteArray());
         }
@@ -85,16 +85,16 @@ public class ProtoBufModule {
     }
 
     /**
-     * Serialized a Protocol Buffer instance into a Byte Array
+     * Serializes a Protocol Buffer instance into a Byte Array
      *
      * <p/>
-     * {@sample.xml ../../../doc/ProtoBuf-connector.xml.sample protobuf:protobuf-to-byte-array-transformer}
+     * {@sample.xml ../../../doc/Protobuf-module.xml.sample protobuf:serialize-to-byte-array}
      *
      * @param protobuf the Protocol Buffer object to transform
      * @return a byte array representation of the given object
      */
     @Transformer (sourceTypes = Object.class)
-    public static byte[] protobufToByteArrayTransformer(Object protobuf) {
+    public static byte[] serializeToByteArray(Object protobuf) {
         if(protobuf != null && protobuf instanceof GeneratedMessage) {
             return ((GeneratedMessage)protobuf).toByteArray();
         }
@@ -105,7 +105,7 @@ public class ProtoBufModule {
      * Filters expired messages according to maximum seconds allowed
      *
      * <p/>
-     * {@sample.xml ../../../doc/ProtoBuf-connector.xml.sample protobuf:time-filter}
+     * {@sample.xml ../../../doc/Protobuf-module.xml.sample protobuf:time-filter}
      *
      * @param dateTime The time of the message
      * @param maxSeconds The maximum amount of seconds until a message is considered to be expired

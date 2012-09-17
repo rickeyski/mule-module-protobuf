@@ -1,0 +1,12 @@
+<!-- BEGIN_INCLUDE(protobuf:deserialize) -->
+    <protobuf:deserialize protobufClass="org.mule.module.protocol.generated.Packet"/>
+<!-- END_INCLUDE(protobuf:deserialize) -->
+<!-- BEGIN_INCLUDE(protobuf:time-filter) -->
+    <protobuf:time-filter dateTime="#[payload.dateTime]" maxSeconds="20"/>
+<!-- END_INCLUDE(protobuf:time-filter) -->
+<!-- BEGIN_INCLUDE(protobuf:serialize-to-input-stream) -->
+    <protobuf:serialize-to-input-stream />
+<!-- END_INCLUDE(protobuf:serialize-to-input-stream) -->
+<!-- BEGIN_INCLUDE(protobuf:serialize-to-byte-array) -->
+    <protobuf:serialize-to-byte-array />
+<!-- END_INCLUDE(protobuf:serialize-to-byte-array) -->

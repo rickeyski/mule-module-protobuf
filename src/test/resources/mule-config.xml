@@ -27,22 +27,22 @@
         http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
         http://www.mulesoft.org/schema/mule/protobuf http://www.mulesoft.org/schema/mule/protobuf/current/mule-protobuf.xsd">
 
-    <flow name="toProtobufTransformer">
-        <protobuf:to-protobuf-transformer protobufClass="org.mule.module.protocol.generated.Packet"/>
+    <flow name="deserialize">
+        <protobuf:deserialize protobufClass="org.mule.module.protocol.generated.Packet"/>
     </flow>
 
     <flow name="timeFilter">
-        <protobuf:to-protobuf-transformer protobufClass="org.mule.module.protocol.generated.Packet"/>
+        <protobuf:deserialize protobufClass="org.mule.module.protocol.generated.Packet"/>
         <protobuf:time-filter dateTime="#[payload.dateTime]" maxSeconds="10"/>
         <set-payload value="VALID"/>
     </flow>
 
-    <flow name="protobufToInputStream">
-        <protobuf:protobuf-to-input-stream-transformer />
+    <flow name="serializeToInputStream">
+        <protobuf:serialize-to-input-stream />
     </flow>
 
-    <flow name="protobufToByteArray">
-        <protobuf:protobuf-to-byte-array-transformer />
+    <flow name="serializeToByteArray">
+        <protobuf:serialize-to-byte-array />
     </flow>
 
 </mule>

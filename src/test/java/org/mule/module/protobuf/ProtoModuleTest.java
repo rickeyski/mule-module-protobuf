@@ -42,9 +42,9 @@ public class ProtoModuleTest extends FunctionalTestCase {
     }
 
     @Test
-    public void testToProtobufTransformer() throws Exception {
+    public void testDeserialize() throws Exception {
         Packet packet = Packet.newBuilder().setMessage(TEST_MESSAGE).setDateTime(ProtoBufModule.DATE_FORMAT.format(new Date())).build();
-        runFlowWithPayload("toProtobufTransformer", packet, packet.toByteArray());
+        runFlowWithPayload("deserialize", packet, packet.toByteArray());
     }
 
     @Test
@@ -73,16 +73,16 @@ public class ProtoModuleTest extends FunctionalTestCase {
     }
 
     @Test
-    public void testProtobufToInputStreamTransformer() throws Exception {
+    public void testSerializeToInputStreamTransformer() throws Exception {
         Packet packet = Packet.newBuilder().setMessage(TEST_MESSAGE).setDateTime(ProtoBufModule.DATE_FORMAT.format(new Date())).build();
-        MuleEvent response = runFlowWithPayload("protobufToInputStream", packet);
+        MuleEvent response = runFlowWithPayload("serializeToInputStream", packet);
         assertEquals(packet, Packet.parseFrom((InputStream) response.getMessage().getPayload()));
     }
 
     @Test
-    public void testProtobufToByteArrayTransformer() throws Exception {
+    public void testSerializeToByteArrayTransformer() throws Exception {
         Packet packet = Packet.newBuilder().setMessage(TEST_MESSAGE).setDateTime(ProtoBufModule.DATE_FORMAT.format(new Date())).build();
-        MuleEvent response = runFlowWithPayload("protobufToByteArray", packet);
+        MuleEvent response = runFlowWithPayload("serializeToByteArray", packet);
         assertEquals(packet, Packet.parseFrom((byte[]) response.getMessage().getPayload()));
     }
 
