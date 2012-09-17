@@ -102,28 +102,6 @@ public class ProtoBufModule {
     }
 
     /**
-     * Filters expired messages according to maximum seconds allowed
-     *
-     * <p/>
-     * {@sample.xml ../../../doc/Protobuf-module.xml.sample protobuf:time-filter}
-     *
-     * @param dateTime The time of the message
-     * @param maxSeconds The maximum amount of seconds until a message is considered to be expired
-     * @param afterChain the after chain
-     * @return the after chain process result
-     * @throws Exception if an exception occurs
-     */
-    @Processor(intercepting = true)
-    public Object timeFilter(String dateTime, @Optional @Default("30") int maxSeconds,  SourceCallback afterChain) throws Exception {
-        long currentTime = System.currentTimeMillis();
-        Date date = DATE_FORMAT.parse(dateTime);
-        if(((currentTime - date.getTime())) < (maxSeconds*1000)) {
-            return afterChain.process();
-        }
-        return null;
-    }
-
-    /**
      *
      * Transformer Resolver to handle Protocol Buffer types
      *

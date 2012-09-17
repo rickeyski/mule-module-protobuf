@@ -58,21 +58,6 @@ public class ProtoModuleTest extends FunctionalTestCase {
     }
 
     @Test
-    public void testTimeFilter() throws Exception {
-        Packet packet = Packet.newBuilder().setMessage(TEST_MESSAGE).setDateTime(ProtoBufModule.DATE_FORMAT.format(new Date())).build();
-        runFlowWithPayload("timeFilter", VALID_MESSAGE, packet.toByteArray());
-    }
-
-    @Test
-    public void testTimeFilterExpired() throws Exception {
-        Calendar calendar = GregorianCalendar.getInstance();
-        calendar.set(Calendar.HOUR, -1);
-        Packet packet = Packet.newBuilder().setMessage(TEST_MESSAGE).setDateTime(ProtoBufModule.DATE_FORMAT.format(calendar.getTime())).build();
-        MuleEvent response = runFlowWithPayload("timeFilter", packet.toByteArray());
-        assertTrue(response.getMessage().getPayload() instanceof NullPayload);
-    }
-
-    @Test
     public void testSerializeToInputStreamTransformer() throws Exception {
         Packet packet = Packet.newBuilder().setMessage(TEST_MESSAGE).setDateTime(ProtoBufModule.DATE_FORMAT.format(new Date())).build();
         MuleEvent response = runFlowWithPayload("serializeToInputStream", packet);

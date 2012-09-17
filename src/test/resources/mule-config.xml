@@ -31,12 +31,6 @@
         <protobuf:deserialize protobufClass="org.mule.module.protocol.generated.Packet"/>
     </flow>
 
-    <flow name="timeFilter">
-        <protobuf:deserialize protobufClass="org.mule.module.protocol.generated.Packet"/>
-        <protobuf:time-filter dateTime="#[payload.dateTime]" maxSeconds="10"/>
-        <set-payload value="VALID"/>
-    </flow>
-
     <flow name="serializeToInputStream">
         <protobuf:serialize-to-input-stream />
     </flow>
