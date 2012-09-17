@@ -74,7 +74,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico" />
 <title>
 
-  AbstractListeningMessageProcessor
+  ToProtobufTransformerMessageProcessor
 
 
 | Google Protocol Buffers Module
@@ -230,11 +230,11 @@
     <li><h2>Classes</h2>
       <ul>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/protobuf/processors/AbstractExpressionEvaluator.html">AbstractExpressionEvaluator</a></li>
-          <li class="selected api apilevel-"><a href="../../../../../../java/org/mule/module/protobuf/processors/AbstractListeningMessageProcessor.html">AbstractListeningMessageProcessor</a>&lt;O&gt;</li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/protobuf/processors/AbstractListeningMessageProcessor.html">AbstractListeningMessageProcessor</a>&lt;O&gt;</li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/protobuf/processors/AbstractMessageProcessor.html">AbstractMessageProcessor</a>&lt;O&gt;</li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/protobuf/processors/ParseProtoMessageProcessor.html">ParseProtoMessageProcessor</a></li>
           <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/protobuf/processors/TimeFilterMessageProcessor.html">TimeFilterMessageProcessor</a></li>
-          <li class="api apilevel-"><a href="../../../../../../java/org/mule/module/protobuf/processors/ToProtobufTransformerMessageProcessor.html">ToProtobufTransformerMessageProcessor</a></li>
+          <li class="selected api apilevel-"><a href="../../../../../../java/org/mule/module/protobuf/processors/ToProtobufTransformerMessageProcessor.html">ToProtobufTransformerMessageProcessor</a></li>
       </ul>
     </li>
               
@@ -319,6 +319,42 @@
    
   
   
+   
+  
+  
+  
+
+  
+   
+  
+  
+   
+  
+  
+  
+
+  
+   
+  
+  
+   
+  
+  
+  
+
+  
+   
+  
+  
+   
+  
+  
+  
+
+  
+   
+  
+  
   
   
 
@@ -333,8 +369,11 @@ Summary:
 
 
 
+  <a href="#inhconstants">Inherited Constants</a>
+  
 
-  <a href="#lfields">Fields</a>
+
+  &#124; <a href="#lfields">Fields</a>
   
 
 
@@ -374,9 +413,9 @@ Summary:
     public
      
      
-    abstract
+    
     class
-<h1>AbstractListeningMessageProcessor</h1>
+<h1>ToProtobufTransformerMessageProcessor</h1>
 
 
 
@@ -398,7 +437,15 @@ Summary:
   
       implements 
       
-        SourceCallback 
+        Disposable 
+      
+        Initialisable 
+      
+        Startable 
+      
+        Stoppable 
+      
+        MessageProcessor 
       
   
   
@@ -444,7 +491,7 @@ Summary:
         
             <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
         
-        <td colspan="1" class="jd-inheritance-class-cell">org.mule.module.protobuf.processors.AbstractListeningMessageProcessor&lt;O&gt;</td>
+        <td colspan="1" class="jd-inheritance-class-cell">org.mule.module.protobuf.processors.ToProtobufTransformerMessageProcessor</td>
     </tr>
     
 
@@ -453,42 +500,16 @@ Summary:
 
 
 
-<table class="jd-sumtable jd-sumtable-subclasses"><tr><td colspan="12" style="border:none;margin:0;padding:0;">
-
-  <a href="#" onclick="return toggleInherited(this, null)" id="subclasses-direct" class="jd-expando-trigger closed"
-          ><img id="subclasses-direct-trigger"
-          src="../../../../../../assets/images/triangle-closed.png"
-          class="jd-expando-trigger-img" /></a>Known Direct Subclasses
-
-  <div id="subclasses-direct">
-      <div id="subclasses-direct-list"
-              class="jd-inheritedlinks"
-              
-              >
-          
-            
-              <a href="../../../../../../java/org/mule/module/protobuf/processors/TimeFilterMessageProcessor.html">TimeFilterMessageProcessor</a>
-            
-          
-      </div>
-      <div id="subclasses-direct-summary"
-              style="display: none;"
-              >
-  <table class="jd-sumtable-expando">
-        <tr class="alt-color api apilevel-" >
-              <td class="jd-linkcol"><a href="../../../../../../java/org/mule/module/protobuf/processors/TimeFilterMessageProcessor.html">TimeFilterMessageProcessor</a></td>
-              <td class="jd-descrcol" width="100%">TimeFilterMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/module/protobuf/ProtoBufModule.html#timeFilter(java.lang.String, int, org.mule.api.callback.SourceCallback)">timeFilter(java.lang.String, int, org.mule.api.callback.SourceCallback)</a></code> method in <code><a href="../../../../../../java/org/mule/module/protobuf/ProtoBufModule.html">ProtoBufModule</a></code>.&nbsp;</td>
-          </tr>
-  </table>
-      </div>
-  </div>
-</td></tr></table>
-
 
 
 
 <div class="jd-descr">
 
+
+<h2>Class Overview</h2>
+<p>ToProtobufTransformerMessageProcessor invokes the <code><a href="../../../../../../java/org/mule/module/protobuf/ProtoBufModule.html#toProtobufTransformer(java.lang.Object, java.lang.String)">toProtobufTransformer(java.lang.Object, java.lang.String)</a></code> method in <code><a href="../../../../../../java/org/mule/module/protobuf/ProtoBufModule.html">ProtoBufModule</a></code>. For each argument there is a field in this processor to match it.  Before invoking the actual method the processor will evaluate and transform where possible to the expected argument type.
+ 
+</p>
 
 
 
@@ -531,6 +552,150 @@ Summary:
 
 
 
+<!-- =========== ENUM CONSTANT SUMMARY =========== -->
+<table id="inhconstants" class="jd-sumtable"><tr><th>
+  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
+  <div style="clear:left;">Inherited Constants</div></th></tr>
+
+
+
+
+
+
+
+
+
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-constants-org.mule.api.lifecycle.Disposable" class="jd-expando-trigger closed"
+          ><img id="inherited-constants-org.mule.api.lifecycle.Disposable-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From interface
+org.mule.api.lifecycle.Disposable
+<div id="inherited-constants-org.mule.api.lifecycle.Disposable">
+  <div id="inherited-constants-org.mule.api.lifecycle.Disposable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-constants-org.mule.api.lifecycle.Disposable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol">String</td>
+        <td class="jd-linkcol">PHASE_NAME</td>
+        <td class="jd-descrcol" width="100%"></td>
+    </tr>
+    
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-constants-org.mule.api.lifecycle.Initialisable" class="jd-expando-trigger closed"
+          ><img id="inherited-constants-org.mule.api.lifecycle.Initialisable-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From interface
+org.mule.api.lifecycle.Initialisable
+<div id="inherited-constants-org.mule.api.lifecycle.Initialisable">
+  <div id="inherited-constants-org.mule.api.lifecycle.Initialisable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-constants-org.mule.api.lifecycle.Initialisable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol">String</td>
+        <td class="jd-linkcol">PHASE_NAME</td>
+        <td class="jd-descrcol" width="100%"></td>
+    </tr>
+    
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-constants-org.mule.api.lifecycle.Startable" class="jd-expando-trigger closed"
+          ><img id="inherited-constants-org.mule.api.lifecycle.Startable-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From interface
+org.mule.api.lifecycle.Startable
+<div id="inherited-constants-org.mule.api.lifecycle.Startable">
+  <div id="inherited-constants-org.mule.api.lifecycle.Startable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-constants-org.mule.api.lifecycle.Startable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol">String</td>
+        <td class="jd-linkcol">PHASE_NAME</td>
+        <td class="jd-descrcol" width="100%"></td>
+    </tr>
+    
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-constants-org.mule.api.lifecycle.Stoppable" class="jd-expando-trigger closed"
+          ><img id="inherited-constants-org.mule.api.lifecycle.Stoppable-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From interface
+org.mule.api.lifecycle.Stoppable
+<div id="inherited-constants-org.mule.api.lifecycle.Stoppable">
+  <div id="inherited-constants-org.mule.api.lifecycle.Stoppable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-constants-org.mule.api.lifecycle.Stoppable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol">String</td>
+        <td class="jd-linkcol">PHASE_NAME</td>
+        <td class="jd-descrcol" width="100%"></td>
+    </tr>
+    
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+
+</table>
+
+
 
 
 <!-- =========== FIELD SUMMARY =========== -->
@@ -540,14 +705,45 @@ Summary:
     
       <tr class="alt-color api apilevel-" >
           <td class="jd-typecol"><nobr>
-          private
+          protected
           
           
-          MessageProcessor</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/protobuf/processors/AbstractListeningMessageProcessor.html#messageProcessor">messageProcessor</a></td>
-          <td class="jd-descrcol" width="100%">Message processor that will get called for processing incoming events
- 
-</td>
+          Object</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/protobuf/processors/ToProtobufTransformerMessageProcessor.html#_payloadType">_payloadType</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/protobuf/processors/ToProtobufTransformerMessageProcessor.html#_protobufClassType">_protobufClassType</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          Object</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/protobuf/processors/ToProtobufTransformerMessageProcessor.html#payload">payload</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          protected
+          
+          
+          Object</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/protobuf/processors/ToProtobufTransformerMessageProcessor.html#protobufClass">protobufClass</a></td>
+          <td class="jd-descrcol" width="100%"></td>
       </tr>
       
     
@@ -636,6 +832,14 @@ Summary:
 
 
 
+
+
+
+
+
+
+
+
 </table>
 
 
@@ -657,7 +861,7 @@ Summary:
             </nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/protobuf/processors/AbstractListeningMessageProcessor.html#AbstractListeningMessageProcessor()">AbstractListeningMessageProcessor</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/protobuf/processors/ToProtobufTransformerMessageProcessor.html#ToProtobufTransformerMessageProcessor()">ToProtobufTransformerMessageProcessor</a></span>()</nobr>
         
   </td></tr>
 
@@ -683,15 +887,11 @@ Summary:
             
             
             
-            MessageProcessor</nobr>
+            void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/protobuf/processors/AbstractListeningMessageProcessor.html#getMessageProcessor()">getMessageProcessor</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/protobuf/processors/ToProtobufTransformerMessageProcessor.html#dispose()">dispose</a></span>()</nobr>
         
-        <div class="jd-descrdiv">Retrieves messageProcessor
- 
-</div>
-  
   </td></tr>
 
 
@@ -703,12 +903,12 @@ Summary:
             
             
             
-            Object</nobr>
+            void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/protobuf/processors/AbstractListeningMessageProcessor.html#process(java.lang.Object, java.util.Map<java.lang.String, java.lang.Object>)">process</a></span>(Object message, Map&lt;String,&nbsp;Object&gt; properties)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/protobuf/processors/ToProtobufTransformerMessageProcessor.html#initialise()">initialise</a></span>()</nobr>
         
-        <div class="jd-descrdiv">Implements SourceCallback#process(org.mule.api.MuleEvent).</div>
+        <div class="jd-descrdiv">Obtains the expression manager from the Mule context and initialises the connector.</div>
   
   </td></tr>
 
@@ -721,12 +921,12 @@ Summary:
             
             
             
-            Object</nobr>
+            MuleEvent</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/protobuf/processors/AbstractListeningMessageProcessor.html#process()">process</a></span>()</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/protobuf/processors/ToProtobufTransformerMessageProcessor.html#process(org.mule.api.MuleEvent)">process</a></span>(MuleEvent event)</nobr>
         
-        <div class="jd-descrdiv">Implements <code><a href="null#process()">process()</a></code>.</div>
+        <div class="jd-descrdiv">Invokes the MessageProcessor.</div>
   
   </td></tr>
 
@@ -739,12 +939,12 @@ Summary:
             
             
             
-            Object</nobr>
+            void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/protobuf/processors/AbstractListeningMessageProcessor.html#process(java.lang.Object)">process</a></span>(Object message)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/protobuf/processors/ToProtobufTransformerMessageProcessor.html#setFlowConstruct(org.mule.api.construct.FlowConstruct)">setFlowConstruct</a></span>(FlowConstruct flowConstruct)</nobr>
         
-        <div class="jd-descrdiv">Implements SourceCallback#process(org.mule.api.MuleEvent).</div>
+        <div class="jd-descrdiv">Sets flow construct</div>
   
   </td></tr>
 
@@ -760,10 +960,78 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/protobuf/processors/AbstractListeningMessageProcessor.html#setListener(org.mule.api.processor.MessageProcessor)">setListener</a></span>(MessageProcessor listener)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/protobuf/processors/ToProtobufTransformerMessageProcessor.html#setMuleContext(org.mule.api.MuleContext)">setMuleContext</a></span>(MuleContext context)</nobr>
         
-        <div class="jd-descrdiv">Sets the message processor that will "listen" the events generated by this message source</div>
+        <div class="jd-descrdiv">Set the Mule context</div>
   
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/protobuf/processors/ToProtobufTransformerMessageProcessor.html#setPayload(java.lang.Object)">setPayload</a></span>(Object value)</nobr>
+        
+        <div class="jd-descrdiv">Sets payload</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/protobuf/processors/ToProtobufTransformerMessageProcessor.html#setProtobufClass(java.lang.Object)">setProtobufClass</a></span>(Object value)</nobr>
+        
+        <div class="jd-descrdiv">Sets protobufClass</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/protobuf/processors/ToProtobufTransformerMessageProcessor.html#start()">start</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/protobuf/processors/ToProtobufTransformerMessageProcessor.html#stop()">stop</a></span>()</nobr>
+        
   </td></tr>
 
 
@@ -1356,80 +1624,6 @@ From class
 
 <tr class="api apilevel-" >
 <td colspan="12">
-  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.callback.SourceCallback" class="jd-expando-trigger closed"
-          ><img id="inherited-methods-org.mule.api.callback.SourceCallback-trigger"
-          src="../../../../../../assets/images/triangle-closed.png"
-          class="jd-expando-trigger-img" /></a>
-From interface
-
-  org.mule.api.callback.SourceCallback
-
-<div id="inherited-methods-org.mule.api.callback.SourceCallback">
-  <div id="inherited-methods-org.mule.api.callback.SourceCallback-list"
-        class="jd-inheritedlinks">
-  </div>
-  <div id="inherited-methods-org.mule.api.callback.SourceCallback-summary" style="display: none;">
-    <table class="jd-sumtable-expando">
-    
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            abstract
-            
-            
-            
-            
-            Object</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">process</span>(Object arg0, Map&lt;String,&nbsp;Object&gt; arg1)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            abstract
-            
-            
-            
-            
-            Object</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">process</span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            abstract
-            
-            
-            
-            
-            Object</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">process</span>(Object arg0)</nobr>
-        
-  </td></tr>
-
-
-</table>
-  </div>
-</div>
-</td></tr>
-
-
-
-<tr class="api apilevel-" >
-<td colspan="12">
   <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.construct.FlowConstructAware" class="jd-expando-trigger closed"
           ><img id="inherited-methods-org.mule.api.construct.FlowConstructAware-trigger"
           src="../../../../../../assets/images/triangle-closed.png"
@@ -1511,6 +1705,216 @@ From interface
 </td></tr>
 
 
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.lifecycle.Disposable" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.api.lifecycle.Disposable-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  org.mule.api.lifecycle.Disposable
+
+<div id="inherited-methods-org.mule.api.lifecycle.Disposable">
+  <div id="inherited-methods-org.mule.api.lifecycle.Disposable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.api.lifecycle.Disposable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">dispose</span>()</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.lifecycle.Initialisable" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.api.lifecycle.Initialisable-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  org.mule.api.lifecycle.Initialisable
+
+<div id="inherited-methods-org.mule.api.lifecycle.Initialisable">
+  <div id="inherited-methods-org.mule.api.lifecycle.Initialisable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.api.lifecycle.Initialisable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">initialise</span>()</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.lifecycle.Startable" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.api.lifecycle.Startable-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  org.mule.api.lifecycle.Startable
+
+<div id="inherited-methods-org.mule.api.lifecycle.Startable">
+  <div id="inherited-methods-org.mule.api.lifecycle.Startable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.api.lifecycle.Startable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">start</span>()</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.lifecycle.Stoppable" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.api.lifecycle.Stoppable-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  org.mule.api.lifecycle.Stoppable
+
+<div id="inherited-methods-org.mule.api.lifecycle.Stoppable">
+  <div id="inherited-methods-org.mule.api.lifecycle.Stoppable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.api.lifecycle.Stoppable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">stop</span>()</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.processor.MessageProcessor" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.api.processor.MessageProcessor-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  org.mule.api.processor.MessageProcessor
+
+<div id="inherited-methods-org.mule.api.processor.MessageProcessor">
+  <div id="inherited-methods-org.mule.api.processor.MessageProcessor-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.api.processor.MessageProcessor-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            MuleEvent</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">process</span>(MuleEvent arg0)</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
 </table>
 
 
@@ -1543,17 +1947,17 @@ From interface
 
 
 
-<A NAME="messageProcessor"></A>
+<A NAME="_payloadType"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
       <span class="normal">
-        private 
+        protected 
          
          
-        MessageProcessor
+        Object
       </span>
-        messageProcessor
+        _payloadType
     </h4>
       <div class="api-level">
         
@@ -1565,9 +1969,97 @@ From interface
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Message processor that will get called for processing incoming events
- 
-</p></div>
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="_protobufClassType"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+        String
+      </span>
+        _protobufClassType
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="payload"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+        Object
+      </span>
+        payload
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="protobufClass"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+        Object
+      </span>
+        protobufClass
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
 
     
     </div>
@@ -1584,7 +2076,7 @@ From interface
 
 
 
-<A NAME="AbstractListeningMessageProcessor()"></A>
+<A NAME="ToProtobufTransformerMessageProcessor()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1596,7 +2088,7 @@ From interface
          
         
       </span>
-      <span class="sympad">AbstractListeningMessageProcessor</span>
+      <span class="sympad">ToProtobufTransformerMessageProcessor</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -1630,188 +2122,7 @@ From interface
 
 
 
-<A NAME="getMessageProcessor()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        MessageProcessor
-      </span>
-      <span class="sympad">getMessageProcessor</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Retrieves messageProcessor
- 
-</p></div>
-
-    </div>
-</div>
-
-
-<A NAME="process(java.lang.Object, java.util.Map<java.lang.String, java.lang.Object>)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        Object
-      </span>
-      <span class="sympad">process</span>
-      <span class="normal">(Object message, Map&lt;String,&nbsp;Object&gt; properties)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Implements SourceCallback#process(org.mule.api.MuleEvent). This message source will be passed on to the actual pojo's method as a callback mechanism.
- 
-</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>message</td>
-          <td></td>
-        </tr>
-        <tr>
-          <th>properties</td>
-          <td></td>
-        </tr>
-      </table>
-  </div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Throws</h5>
-      <table class="jd-tagtable">  
-        <tr>
-            <th>Exception</td>
-            <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="process()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        Object
-      </span>
-      <span class="sympad">process</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Implements <code><a href="null#process()">process()</a></code>. This message source will be passed on to the actual pojo's method as a callback mechanism.
- 
-</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Throws</h5>
-      <table class="jd-tagtable">  
-        <tr>
-            <th>Exception</td>
-            <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="process(java.lang.Object)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        Object
-      </span>
-      <span class="sympad">process</span>
-      <span class="normal">(Object message)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Implements SourceCallback#process(org.mule.api.MuleEvent). This message source will be passed on to the actual pojo's method as a callback mechanism.
- 
-</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>message</td>
-          <td></td>
-        </tr>
-      </table>
-  </div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Throws</h5>
-      <table class="jd-tagtable">  
-        <tr>
-            <th>Exception</td>
-            <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setListener(org.mule.api.processor.MessageProcessor)"></A>
+<A NAME="dispose()"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1823,8 +2134,8 @@ From interface
          
         void
       </span>
-      <span class="sympad">setListener</span>
-      <span class="normal">(MessageProcessor listener)</span>
+      <span class="sympad">dispose</span>
+      <span class="normal">()</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1836,14 +2147,337 @@ From interface
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Sets the message processor that will "listen" the events generated by this message source</p></div>
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="initialise()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">initialise</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Obtains the expression manager from the Mule context and initialises the connector. If a target object  has not been set already it will search the Mule registry for a default one.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>InitialisationException</td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="process(org.mule.api.MuleEvent)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        MuleEvent
+      </span>
+      <span class="sympad">process</span>
+      <span class="normal">(MuleEvent event)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Invokes the MessageProcessor.</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
-          <th>listener</td>
-          <td>Message processor
+          <th>event</td>
+          <td>MuleEvent to be processed</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>MuleException</td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setFlowConstruct(org.mule.api.construct.FlowConstruct)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setFlowConstruct</span>
+      <span class="normal">(FlowConstruct flowConstruct)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets flow construct</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>flowConstruct</td>
+          <td>Flow construct to set
 </td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setMuleContext(org.mule.api.MuleContext)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setMuleContext</span>
+      <span class="normal">(MuleContext context)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Set the Mule context</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>context</td>
+          <td>Mule context to set
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setPayload(java.lang.Object)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setPayload</span>
+      <span class="normal">(Object value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets payload</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>Value to set
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setProtobufClass(java.lang.Object)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setProtobufClass</span>
+      <span class="normal">(Object value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets protobufClass</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>Value to set
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="start()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">start</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>MuleException</td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="stop()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">stop</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>MuleException</td>
+            <td></td>
         </tr>
       </table>
   </div>

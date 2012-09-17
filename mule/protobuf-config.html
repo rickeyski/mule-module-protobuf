@@ -284,19 +284,21 @@ Summary:
 
 
 <table id="promethods" class="jd-sumtable">
-<tr><th colspan="12">Message Processors<br/><span style="font-weight: 200;"></span></th></tr>
+<tr><th colspan="12">Transformers<br/><span style="font-weight: 200;"></span></th></tr>
     
     
-    <!-- ========== MESSAGE PROCESSOR SUMMARY =========== -->
+    
+    
+    <!-- ========== MESSAGE TRANSFORMER SUMMARY =========== -->
     
 
 
 	 
     <tr class="alt-color api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../mule/protobuf-config.html#parse-proto">&lt;protobuf:parse-proto&gt;</a></nobr>
+        <span class="sympad"><a href="../mule/protobuf-config.html#protobuf-to-byte-array-transformer">&lt;protobuf:protobuf-to-byte-array-transformer&gt;</a></nobr>
         
-        <div class="jd-descrdiv">Parses the payload to build the specified Protocol Buffer class object
+        <div class="jd-descrdiv">Serialized a Protocol Buffer instance into a Byte Array
 
  <p/>
  </div>
@@ -307,12 +309,47 @@ Summary:
 	 
     <tr class=" api apilevel-" >
         <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../mule/protobuf-config.html#protobuf-to-input-stream-transformer">&lt;protobuf:protobuf-to-input-stream-transformer&gt;</a></nobr>
+        
+        <div class="jd-descrdiv">Serializes a Protocol Buffer instance into an InputStream
+
+ <p/>
+ </div>
+        
+  </td></tr>
+
+
+
+    
+</table>
+
+<table id="promethods" class="jd-sumtable">
+<tr><th colspan="12">Message Processors<br/><span style="font-weight: 200;"></span></th></tr>
+    
+    
+    <!-- ========== MESSAGE PROCESSOR SUMMARY =========== -->
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/protobuf-config.html#time-filter">&lt;protobuf:time-filter&gt;</a></nobr>
         
         <div class="jd-descrdiv">Filters expired messages according to maximum seconds allowed
 
  <p/>
  </div>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../mule/protobuf-config.html#to-protobuf-transformer">&lt;protobuf:to-protobuf-transformer&gt;</a></nobr>
+        
+        <div class="jd-descrdiv">Parses the payload to build the specified Protocol Buffer class object.</div>
         
   </td></tr>
 
@@ -373,90 +410,9 @@ similar to the following:</p>
 
 
     
+
     
-
-
-<A NAME="parse-proto"></A>
-
-<div class="jd-details api apilevel-">
-    <h4 class="jd-details-title">
-      <span class="sympad">&lt;protobuf:parse-proto&gt;</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Parses the payload to build the specified Protocol Buffer class object
-
- <p/>
- <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;protobuf:parse-proto protoBufClass="org.mule.module.protocol.generated.Packet"/&gt;</pre></div></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Attributes</h5>
-
-        <table id="lconfig" class="jd-sumtable">
-        <tr><th>Name</th><th>Default Value</th><th>Description</th><th>Java Type</th><th>MIME Type</th><th>Encoding</th></tr>
-        <tr>
-          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
-          <td class="jd-descrcol"></td>
-          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td>
-          <td class="jd-descrcol"></td>
-          <td class="jd-descrcol"></td>
-          <td class="jd-descrcol"></td>
-        </tr>
-          
-          
-                
-                    <tr class=" api apilevel-" >
-                        <td class="jd-linkcol"><nobr>payload</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">Payload to process</td>
-                        <td class="jd-descrcol">Object</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol"></td>
-                    </tr>
-                
-                
-          
-                
-                    <tr class="alt-color api apilevel-" >
-                        <td class="jd-linkcol"><nobr>protoBufClass</nobr></td>
-                        <td class="jd-descrcol"></td>
-                        <td class="jd-descrcol">Name of protocol buffer class</td>
-                        <td class="jd-descrcol">String</td>
-                        <td class="jd-descrcol">*/*</td>
-                        <td class="jd-descrcol">UTF-8</td>
-                    </tr>
-                
-                
-          
-          
-          
-        </table>
-  </div>
-  
-  
-      <div class="jd-tagdata">
-         <h5 class="jd-tagtitle">Returns</h5>
-         <table id="lconfig" class="jd-sumtable">
-             <tr>
-                <th>Return Type</th>
-                <th>Description</th>
-             </tr>
-             <tr>
-                <td class="jd-descrcol">Object</td>
-                <td class="jd-descrcol">an instance of the specified class built from the incoming payload
-</td>
-             </tr>
-         </table>
-  </div>
     
-  
-
-    </div>
-</div>
 
 
 <A NAME="time-filter"></A>
@@ -565,6 +521,90 @@ similar to the following:</p>
 </div>
 
 
+<A NAME="to-protobuf-transformer"></A>
+
+<div class="jd-details api apilevel-">
+    <h4 class="jd-details-title">
+      <span class="sympad">&lt;protobuf:to-protobuf-transformer&gt;</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Parses the payload to build the specified Protocol Buffer class object. Accepted payload types are InputStream or
+ byte[].
+
+ <p/>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;protobuf:to-protobuf-transformer protobufClass="org.mule.module.protocol.generated.Packet"/&gt;</pre></div></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Attributes</h5>
+
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th><th>Java Type</th><th>MIME Type</th><th>Encoding</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol"></td>
+        </tr>
+          
+          
+                
+                    <tr class=" api apilevel-" >
+                        <td class="jd-linkcol"><nobr>payload</nobr></td>
+                        <td class="jd-descrcol"></td>
+                        <td class="jd-descrcol">Payload to process</td>
+                        <td class="jd-descrcol">Object</td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol"></td>
+                    </tr>
+                
+                
+          
+                
+                    <tr class="alt-color api apilevel-" >
+                        <td class="jd-linkcol"><nobr>protobufClass</nobr></td>
+                        <td class="jd-descrcol"></td>
+                        <td class="jd-descrcol">Name of protocol buffer class</td>
+                        <td class="jd-descrcol">String</td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol">UTF-8</td>
+                    </tr>
+                
+                
+          
+          
+          
+        </table>
+  </div>
+  
+  
+      <div class="jd-tagdata">
+         <h5 class="jd-tagtitle">Returns</h5>
+         <table id="lconfig" class="jd-sumtable">
+             <tr>
+                <th>Return Type</th>
+                <th>Description</th>
+             </tr>
+             <tr>
+                <td class="jd-descrcol">Object</td>
+                <td class="jd-descrcol">an instance of the specified class built from the incoming payload
+</td>
+             </tr>
+         </table>
+  </div>
+    
+  
+
+    </div>
+</div>
+
+
     
 
 
@@ -578,6 +618,8 @@ similar to the following:</p>
 
     
 
+    
+
 
 
 
@@ -586,6 +628,154 @@ similar to the following:</p>
 <!-- Transformers -->
 <h2>Transformers</h2>
 
+
+    
+    
+
+
+<A NAME="protobuf-to-byte-array-transformer"></A>
+
+<div class="jd-details api apilevel-">
+    <h4 class="jd-details-title">
+      <span class="sympad">&lt;protobuf:protobuf-to-byte-array-transformer&gt;</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Serialized a Protocol Buffer instance into a Byte Array
+
+ <p/>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;protobuf:protobuf-to-byte-array-transformer /&gt;</pre></div></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Attributes</h5>
+
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th><th>Java Type</th><th>MIME Type</th><th>Encoding</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol"></td>
+        </tr>
+          
+          
+                
+                    <tr class=" api apilevel-" >
+                        <td class="jd-linkcol"><nobr>protobuf</nobr></td>
+                        <td class="jd-descrcol"></td>
+                        <td class="jd-descrcol">The Protocol Buffer object to transform</td>
+                        <td class="jd-descrcol">Object</td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol"></td>
+                    </tr>
+                
+                
+          
+          
+          
+        </table>
+  </div>
+  
+  
+      <div class="jd-tagdata">
+         <h5 class="jd-tagtitle">Returns</h5>
+         <table id="lconfig" class="jd-sumtable">
+             <tr>
+                <th>Return Type</th>
+                <th>Description</th>
+             </tr>
+             <tr>
+                <td class="jd-descrcol">byte[]</td>
+                <td class="jd-descrcol">a byte array representation of the given object
+</td>
+             </tr>
+         </table>
+  </div>
+    
+  
+
+    </div>
+</div>
+
+
+<A NAME="protobuf-to-input-stream-transformer"></A>
+
+<div class="jd-details api apilevel-">
+    <h4 class="jd-details-title">
+      <span class="sympad">&lt;protobuf:protobuf-to-input-stream-transformer&gt;</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Serializes a Protocol Buffer instance into an InputStream
+
+ <p/>
+ <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;protobuf:protobuf-to-input-stream-transformer /&gt;</pre></div></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Attributes</h5>
+
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th><th>Java Type</th><th>MIME Type</th><th>Encoding</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol"></td>
+        </tr>
+          
+          
+                
+                    <tr class=" api apilevel-" >
+                        <td class="jd-linkcol"><nobr>protobuf</nobr></td>
+                        <td class="jd-descrcol"></td>
+                        <td class="jd-descrcol">The Protocol Buffer object to transform</td>
+                        <td class="jd-descrcol">Object</td>
+                        <td class="jd-descrcol">*/*</td>
+                        <td class="jd-descrcol"></td>
+                    </tr>
+                
+                
+          
+          
+          
+        </table>
+  </div>
+  
+  
+      <div class="jd-tagdata">
+         <h5 class="jd-tagtitle">Returns</h5>
+         <table id="lconfig" class="jd-sumtable">
+             <tr>
+                <th>Return Type</th>
+                <th>Description</th>
+             </tr>
+             <tr>
+                <td class="jd-descrcol">InputStream</td>
+                <td class="jd-descrcol">an InputStream representation of the given object
+</td>
+             </tr>
+         </table>
+  </div>
+    
+  
+
+    </div>
+</div>
+
+
+    
 
     
 

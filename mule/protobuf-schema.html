@@ -257,13 +257,14 @@
       &lt;/xs:complexContent&gt;
     &lt;/xs:complexType&gt;
   &lt;/xs:element&gt;
-  &lt;xs:element xmlns=&quot;http://www.mulesoft.org/schema/mule/protobuf&quot; xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; name=&quot;parse-proto&quot; substitutionGroup=&quot;mule:abstract-message-processor&quot; type=&quot;ParseProtoType&quot;&gt;
+  &lt;xs:element xmlns=&quot;http://www.mulesoft.org/schema/mule/protobuf&quot; xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; name=&quot;to-protobuf-transformer&quot; substitutionGroup=&quot;mule:abstract-message-processor&quot; type=&quot;ToProtobufTransformerType&quot;&gt;
     &lt;xs:annotation&gt;
-      &lt;xs:documentation&gt;Parses the payload to build the specified Protocol Buffer class object
+      &lt;xs:documentation&gt;Parses the payload to build the specified Protocol Buffer class object. Accepted payload types are InputStream or
+byte[].
 &amp;lt;p/&amp;gt;&lt;/xs:documentation&gt;
     &lt;/xs:annotation&gt;
   &lt;/xs:element&gt;
-  &lt;xs:complexType name=&quot;ParseProtoType&quot;&gt;
+  &lt;xs:complexType name=&quot;ToProtobufTransformerType&quot;&gt;
     &lt;xs:complexContent&gt;
       &lt;xs:extension xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:abstractMessageProcessorType&quot;&gt;
         &lt;xs:attribute name=&quot;config-ref&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
@@ -271,7 +272,7 @@
             &lt;xs:documentation&gt;Specify which configuration to use for this invocation.&lt;/xs:documentation&gt;
           &lt;/xs:annotation&gt;
         &lt;/xs:attribute&gt;
-        &lt;xs:attribute name=&quot;protoBufClass&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+        &lt;xs:attribute name=&quot;protobufClass&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
           &lt;xs:annotation&gt;
             &lt;xs:documentation&gt;Name of protocol buffer class&lt;/xs:documentation&gt;
           &lt;/xs:annotation&gt;
@@ -306,6 +307,8 @@
       &lt;/xs:extension&gt;
     &lt;/xs:complexContent&gt;
   &lt;/xs:complexType&gt;
+  &lt;xs:element xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; name=&quot;protobuf-to-input-stream-transformer&quot; substitutionGroup=&quot;mule:abstract-transformer&quot; type=&quot;mule:abstractTransformerType&quot;&gt;&lt;/xs:element&gt;
+  &lt;xs:element xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; name=&quot;protobuf-to-byte-array-transformer&quot; substitutionGroup=&quot;mule:abstract-transformer&quot; type=&quot;mule:abstractTransformerType&quot;&gt;&lt;/xs:element&gt;
   &lt;xs:simpleType name=&quot;integerType&quot;&gt;
     &lt;xs:union&gt;
       &lt;xs:simpleType&gt;

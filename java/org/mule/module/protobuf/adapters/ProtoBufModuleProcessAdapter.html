@@ -217,6 +217,8 @@
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/protobuf/transformerResolvers/package-summary.html">org.mule.module.protobuf.transformerResolvers</a></li>
     <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/module/protobuf/transformers/package-summary.html">org.mule.module.protobuf.transformers</a></li>
+    <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/protocol/generated/package-summary.html">org.mule.module.protocol.generated</a></li>
               </ul><br/>
             </div> <!-- end packages -->
@@ -1195,14 +1197,56 @@ From class
             
             
             
+            static
+            
+            byte[]</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/protobuf/ProtoBufModule.html#protobufToByteArrayTransformer(java.lang.Object)">protobufToByteArrayTransformer</a></span>(Object protobuf)</nobr>
+        
+        <div class="jd-descrdiv">Serialized a Protocol Buffer instance into a Byte Array
+
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            
+            InputStream</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/protobuf/ProtoBufModule.html#protobufToInputStreamTransformer(java.lang.Object)">protobufToInputStreamTransformer</a></span>(Object protobuf)</nobr>
+        
+        <div class="jd-descrdiv">Serializes a Protocol Buffer instance into an InputStream
+
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
             
             
             Object</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/protobuf/ProtoBufModule.html#parseProto(java.lang.Object, java.lang.String)">parseProto</a></span>(Object payload, String protoBufClass)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/protobuf/ProtoBufModule.html#timeFilter(java.lang.String, int, org.mule.api.callback.SourceCallback)">timeFilter</a></span>(String dateTime, int maxSeconds, SourceCallback afterChain)</nobr>
         
-        <div class="jd-descrdiv">Parses the payload to build the specified Protocol Buffer class object
+        <div class="jd-descrdiv">Filters expired messages according to maximum seconds allowed
 
  <p/>
  </div>
@@ -1221,12 +1265,9 @@ From class
             Object</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/protobuf/ProtoBufModule.html#timeFilter(java.lang.String, int, org.mule.api.callback.SourceCallback)">timeFilter</a></span>(String dateTime, int maxSeconds, SourceCallback afterChain)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/protobuf/ProtoBufModule.html#toProtobufTransformer(java.lang.Object, java.lang.String)">toProtobufTransformer</a></span>(Object payload, String protobufClass)</nobr>
         
-        <div class="jd-descrdiv">Filters expired messages according to maximum seconds allowed
-
- <p/>
- </div>
+        <div class="jd-descrdiv">Parses the payload to build the specified Protocol Buffer class object.</div>
   
   </td></tr>
 

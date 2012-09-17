@@ -217,6 +217,8 @@
     <li class="api apilevel-">
   <a href="../../../../../java/org/mule/module/protobuf/transformerResolvers/package-summary.html">org.mule.module.protobuf.transformerResolvers</a></li>
     <li class="api apilevel-">
+  <a href="../../../../../java/org/mule/module/protobuf/transformers/package-summary.html">org.mule.module.protobuf.transformers</a></li>
+    <li class="api apilevel-">
   <a href="../../../../../java/org/mule/module/protocol/generated/package-summary.html">org.mule.module.protocol.generated</a></li>
               </ul><br/>
             </div> <!-- end packages -->
@@ -583,14 +585,56 @@ Summary:
             
             
             
+            static
+            
+            byte[]</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/protobuf/ProtoBufModule.html#protobufToByteArrayTransformer(java.lang.Object)">protobufToByteArrayTransformer</a></span>(Object protobuf)</nobr>
+        
+        <div class="jd-descrdiv">Serialized a Protocol Buffer instance into a Byte Array
+
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            
+            InputStream</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/protobuf/ProtoBufModule.html#protobufToInputStreamTransformer(java.lang.Object)">protobufToInputStreamTransformer</a></span>(Object protobuf)</nobr>
+        
+        <div class="jd-descrdiv">Serializes a Protocol Buffer instance into an InputStream
+
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
             
             
             Object</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/module/protobuf/ProtoBufModule.html#parseProto(java.lang.Object, java.lang.String)">parseProto</a></span>(Object payload, String protoBufClass)</nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/protobuf/ProtoBufModule.html#timeFilter(java.lang.String, int, org.mule.api.callback.SourceCallback)">timeFilter</a></span>(String dateTime, int maxSeconds, SourceCallback afterChain)</nobr>
         
-        <div class="jd-descrdiv">Parses the payload to build the specified Protocol Buffer class object
+        <div class="jd-descrdiv">Filters expired messages according to maximum seconds allowed
 
  <p/>
  </div>
@@ -609,12 +653,9 @@ Summary:
             Object</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../org/mule/module/protobuf/ProtoBufModule.html#timeFilter(java.lang.String, int, org.mule.api.callback.SourceCallback)">timeFilter</a></span>(String dateTime, int maxSeconds, SourceCallback afterChain)</nobr>
+        <span class="sympad"><a href="../../../../../org/mule/module/protobuf/ProtoBufModule.html#toProtobufTransformer(java.lang.Object, java.lang.String)">toProtobufTransformer</a></span>(Object payload, String protobufClass)</nobr>
         
-        <div class="jd-descrdiv">Filters expired messages according to maximum seconds allowed
-
- <p/>
- </div>
+        <div class="jd-descrdiv">Parses the payload to build the specified Protocol Buffer class object.</div>
   
   </td></tr>
 
@@ -1014,20 +1055,20 @@ From class
 </div>
 
 
-<A NAME="parseProto(java.lang.Object, java.lang.String)"></A>
+<A NAME="protobufToByteArrayTransformer(java.lang.Object)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
       <span class="normal">
         public 
+        static 
          
          
          
-         
-        Object
+        byte[]
       </span>
-      <span class="sympad">parseProto</span>
-      <span class="normal">(Object payload, String protoBufClass)</span>
+      <span class="sympad">protobufToByteArrayTransformer</span>
+      <span class="normal">(Object protobuf)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1039,7 +1080,7 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Parses the payload to build the specified Protocol Buffer class object
+  <div class="jd-tagdata jd-tagdescr"><p>Serialized a Protocol Buffer instance into a Byte Array
 
  <p/>
  </p></div>
@@ -1047,18 +1088,62 @@ From class
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
         <tr>
-          <th>payload</td>
-          <td>Payload to process</td>
-        </tr>
-        <tr>
-          <th>protoBufClass</td>
-          <td>Name of protocol buffer class</td>
+          <th>protobuf</td>
+          <td>The Protocol Buffer object to transform</td>
         </tr>
       </table>
   </div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Returns</h5>
-      <ul class="nolist"><li>an instance of the specified class built from the incoming payload
+      <ul class="nolist"><li>a byte array representation of the given object
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="protobufToInputStreamTransformer(java.lang.Object)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+         
+         
+         
+        InputStream
+      </span>
+      <span class="sympad">protobufToInputStreamTransformer</span>
+      <span class="normal">(Object protobuf)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Serializes a Protocol Buffer instance into an InputStream
+
+ <p/>
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>protobuf</td>
+          <td>The Protocol Buffer object to transform</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>an InputStream representation of the given object
 </li></ul>
   </div>
 
@@ -1125,6 +1210,59 @@ From class
 </td>
         </tr>
       </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="toProtobufTransformer(java.lang.Object, java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        Object
+      </span>
+      <span class="sympad">toProtobufTransformer</span>
+      <span class="normal">(Object payload, String protobufClass)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Parses the payload to build the specified Protocol Buffer class object. Accepted payload types are InputStream or
+ byte[].
+
+ <p/>
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>payload</td>
+          <td>Payload to process</td>
+        </tr>
+        <tr>
+          <th>protobufClass</td>
+          <td>Name of protocol buffer class</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>an instance of the specified class built from the incoming payload
+</li></ul>
   </div>
 
     </div>
