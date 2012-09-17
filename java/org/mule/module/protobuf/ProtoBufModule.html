@@ -592,7 +592,7 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../org/mule/module/protobuf/ProtoBufModule.html#deserialize(java.lang.Object, java.lang.String)">deserialize</a></span>(Object payload, String protobufClass)</nobr>
         
-        <div class="jd-descrdiv">Parses the payload to build the specified Protocol Buffer class object.</div>
+        <div class="jd-descrdiv">Parses the payload to build the specified Protocol Buffer object.</div>
   
   </td></tr>
 
@@ -610,10 +610,7 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../org/mule/module/protobuf/ProtoBufModule.html#serializeToByteArray(java.lang.Object)">serializeToByteArray</a></span>(Object protobuf)</nobr>
         
-        <div class="jd-descrdiv">Serializes a Protocol Buffer instance into a Byte Array
-
- <p/>
- </div>
+        <div class="jd-descrdiv">Serializes a Protocol Buffer instance into a Byte Array.</div>
   
   </td></tr>
 
@@ -631,10 +628,7 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../org/mule/module/protobuf/ProtoBufModule.html#serializeToInputStream(java.lang.Object)">serializeToInputStream</a></span>(Object protobuf)</nobr>
         
-        <div class="jd-descrdiv">Serializes a Protocol Buffer instance into an InputStream
-
- <p/>
- </div>
+        <div class="jd-descrdiv">Serializes a Protocol Buffer instance into an InputStream.</div>
   
   </td></tr>
 
@@ -1059,8 +1053,10 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Parses the payload to build the specified Protocol Buffer class object. Accepted payload types are InputStream or
+  <div class="jd-tagdata jd-tagdescr"><p>Parses the payload to build the specified Protocol Buffer object. Accepted payload types are InputStream or
  byte[].
+
+ The provided Class needs to be a Protocol Buffer class in order to parse the input.
 
  <p/>
  </p></div>
@@ -1112,7 +1108,7 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Serializes a Protocol Buffer instance into a Byte Array
+  <div class="jd-tagdata jd-tagdescr"><p>Serializes a Protocol Buffer instance into a Byte Array. The input must be an instance of GeneratedMessage.
 
  <p/>
  </p></div>
@@ -1160,7 +1156,7 @@ From class
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Serializes a Protocol Buffer instance into an InputStream
+  <div class="jd-tagdata jd-tagdescr"><p>Serializes a Protocol Buffer instance into an InputStream. The input must be an instance of GeneratedMessage.
 
  <p/>
  </p></div>

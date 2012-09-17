@@ -259,8 +259,9 @@
   &lt;/xs:element&gt;
   &lt;xs:element xmlns=&quot;http://www.mulesoft.org/schema/mule/protobuf&quot; xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; name=&quot;deserialize&quot; substitutionGroup=&quot;mule:abstract-message-processor&quot; type=&quot;DeserializeType&quot;&gt;
     &lt;xs:annotation&gt;
-      &lt;xs:documentation&gt;Parses the payload to build the specified Protocol Buffer class object. Accepted payload types are InputStream or
+      &lt;xs:documentation&gt;Parses the payload to build the specified Protocol Buffer object. Accepted payload types are InputStream or
 byte[].
+The provided Class needs to be a Protocol Buffer class in order to parse the input.
 &amp;lt;p/&amp;gt;&lt;/xs:documentation&gt;
     &lt;/xs:annotation&gt;
   &lt;/xs:element&gt;

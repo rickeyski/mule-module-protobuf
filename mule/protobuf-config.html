@@ -298,10 +298,7 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/protobuf-config.html#serialize-to-byte-array">&lt;protobuf:serialize-to-byte-array&gt;</a></nobr>
         
-        <div class="jd-descrdiv">Serializes a Protocol Buffer instance into a Byte Array
-
- <p/>
- </div>
+        <div class="jd-descrdiv">Serializes a Protocol Buffer instance into a Byte Array.</div>
         
   </td></tr>
 
@@ -311,10 +308,7 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/protobuf-config.html#serialize-to-input-stream">&lt;protobuf:serialize-to-input-stream&gt;</a></nobr>
         
-        <div class="jd-descrdiv">Serializes a Protocol Buffer instance into an InputStream
-
- <p/>
- </div>
+        <div class="jd-descrdiv">Serializes a Protocol Buffer instance into an InputStream.</div>
         
   </td></tr>
 
@@ -336,7 +330,7 @@ Summary:
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../mule/protobuf-config.html#deserialize">&lt;protobuf:deserialize&gt;</a></nobr>
         
-        <div class="jd-descrdiv">Parses the payload to build the specified Protocol Buffer class object.</div>
+        <div class="jd-descrdiv">Parses the payload to build the specified Protocol Buffer object.</div>
         
   </td></tr>
 
@@ -415,8 +409,10 @@ similar to the following:</p>
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Parses the payload to build the specified Protocol Buffer class object. Accepted payload types are InputStream or
+  <div class="jd-tagdata jd-tagdescr"><p>Parses the payload to build the specified Protocol Buffer object. Accepted payload types are InputStream or
  byte[].
+
+ The provided Class needs to be a Protocol Buffer class in order to parse the input.
 
  <p/>
  <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;protobuf:deserialize protobufClass="org.mule.module.protocol.generated.Packet"/&gt;</pre></div></p></div>
@@ -527,7 +523,7 @@ similar to the following:</p>
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Serializes a Protocol Buffer instance into a Byte Array
+  <div class="jd-tagdata jd-tagdescr"><p>Serializes a Protocol Buffer instance into a Byte Array. The input must be an instance of GeneratedMessage.
 
  <p/>
  <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;protobuf:serialize-to-byte-array /&gt;</pre></div></p></div>
@@ -598,7 +594,7 @@ similar to the following:</p>
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Serializes a Protocol Buffer instance into an InputStream
+  <div class="jd-tagdata jd-tagdescr"><p>Serializes a Protocol Buffer instance into an InputStream. The input must be an instance of GeneratedMessage.
 
  <p/>
  <div class="jd-tagdata"><h5 class="jd-tagtitle">XML Sample</h5><pre>&lt;protobuf:serialize-to-input-stream /&gt;</pre></div></p></div>
