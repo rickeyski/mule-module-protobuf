@@ -10,7 +10,7 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>protobuf-module</artifactId>
+    <artifactId>mule-module-protobuf</artifactId>
     <packaging>mule-module</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>Google Protocol Buffers Module</name>
