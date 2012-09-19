@@ -10,7 +10,7 @@
 <!-- BEGIN_INCLUDE(protobuf:builder) -->
     <protobuf:builder protobufClass="org.mule.module.protocol.generated.Packet">
         <protobuf:properties>
-            <protobuf:property key="message" value-ref="#[payload.message]"/>
+            <protobuf:property name="message" expression-ref="#[payload.message]"/>
         </protobuf:properties>
     </protobuf:builder>
 <!-- END_INCLUDE(protobuf:builder) -->

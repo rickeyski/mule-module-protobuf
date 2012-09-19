@@ -42,8 +42,8 @@
     <flow name="messageBuilderTransformer">
         <protobuf:builder protobufClass="org.mule.module.protocol.generated.Packet">
             <protobuf:properties>
-                <protobuf:property key="message" value-ref="#[payload.message]" />
-                <protobuf:property key="dateTime" value-ref="#[payload.dateTime]" />
+                <protobuf:property name="message" expression-ref="#[payload.message]" />
+                <protobuf:property name="dateTime" expression-ref="#[payload.dateTime]" />
             </protobuf:properties>
         </protobuf:builder>
     </flow>

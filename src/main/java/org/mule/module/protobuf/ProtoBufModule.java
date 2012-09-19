@@ -17,12 +17,9 @@ import org.mule.api.annotations.Transformer;
 import org.mule.api.annotations.TransformerResolver;
 import org.mule.api.annotations.param.Payload;
 import org.mule.api.transformer.DataType;
-import org.mule.module.protocol.generated.Packet;
-import org.mule.util.IOUtils;
 
 import com.google.protobuf.GeneratedMessage;
 import com.google.protobuf.Message;
-import com.google.protobuf.MessageOrBuilder;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -30,7 +27,6 @@ import java.lang.reflect.Method;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -157,14 +153,14 @@ public class ProtoBufModule {
      * @throws Exception if an error occurs building the object
      */
     @Processor
-    public Object builder(String protobufClass,Map<String, Object> properties) throws Exception {
+    public Object builder(String protobufClass,List<Property> properties) throws Exception {
 
         Class clazz = Class.forName(protobufClass);
         Object builder = clazz.getDeclaredMethod("newBuilder").invoke(null);
         Class builderClass = builder.getClass();
 
-        for(String name : properties.keySet()) {
-            builderClass.getDeclaredMethod("set" + StringUtils.capitalize(name), properties.get(name).getClass()).invoke(builder, properties.get(name));
+        for(Property property : properties) {
+            builderClass.getDeclaredMethod("set" + StringUtils.capitalize(property.getName()), property.getExpression().getClass()).invoke(builder, property.getExpression());
         }
 
         return ((Message.Builder) builder).build();
