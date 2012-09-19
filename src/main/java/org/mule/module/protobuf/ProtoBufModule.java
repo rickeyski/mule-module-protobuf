@@ -17,14 +17,22 @@ import org.mule.api.annotations.Transformer;
 import org.mule.api.annotations.TransformerResolver;
 import org.mule.api.annotations.param.Payload;
 import org.mule.api.transformer.DataType;
+import org.mule.module.protocol.generated.Packet;
+import org.mule.util.IOUtils;
 
 import com.google.protobuf.GeneratedMessage;
+import com.google.protobuf.Message;
+import com.google.protobuf.MessageOrBuilder;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.commons.lang.StringUtils;
 
 /**
  * Protocol Buffer Module
@@ -135,6 +143,31 @@ public class ProtoBufModule {
 
     private static boolean isProtobufClass(Class clazz) {
         return clazz.getSuperclass() != null && clazz.getSuperclass().equals(GeneratedMessage.class);
+    }
+
+    /**
+     * Builder to instantiate and populate the provided Class. The class must be a Google Protocol Buffer class.
+     *
+     * <p/>
+     * {@sample.xml ../../../doc/Protobuf-module.xml.sample protobuf:builder}
+     *
+     * @param protobufClass the Protocol Buffer class name
+     * @param properties the map of properties needed to populate the bean
+     * @return the Protocol Buffer object populated
+     * @throws Exception if an error occurs building the object
+     */
+    @Processor
+    public Object builder(String protobufClass,Map<String, Object> properties) throws Exception {
+
+        Class clazz = Class.forName(protobufClass);
+        Object builder = clazz.getDeclaredMethod("newBuilder").invoke(null);
+        Class builderClass = builder.getClass();
+
+        for(String name : properties.keySet()) {
+            builderClass.getDeclaredMethod("set" + StringUtils.capitalize(name), properties.get(name).getClass()).invoke(builder, properties.get(name));
+        }
+
+        return ((Message.Builder) builder).build();
     }
 
 }

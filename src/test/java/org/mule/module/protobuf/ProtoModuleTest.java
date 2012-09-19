@@ -30,6 +30,7 @@ import java.util.List;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 public class ProtoModuleTest extends FunctionalTestCase {
@@ -69,6 +70,18 @@ public class ProtoModuleTest extends FunctionalTestCase {
         Packet packet = Packet.newBuilder().setMessage(TEST_MESSAGE).setDateTime(ProtoBufModule.DATE_FORMAT.format(new Date())).build();
         MuleEvent response = runFlowWithPayload("serializeToByteArray", packet);
         assertEquals(packet, Packet.parseFrom((byte[]) response.getMessage().getPayload()));
+    }
+
+    @Test
+    public void testMessageBuilderTransformer() throws Exception {
+        Message message = new Message();
+        message.setMessage(TEST_MESSAGE);
+        message.setDateTime(new Date().toString());
+        MuleEvent response = runFlowWithPayload("messageBuilderTransformer", message);
+        assertTrue(response.getMessage().getPayload() instanceof Packet);
+        Packet packet = (Packet) response.getMessage().getPayload();
+        assertEquals(message.getMessage(), packet.getMessage());
+        assertEquals(message.getDateTime(), packet.getDateTime());
     }
 
     private boolean containsTransformerResolver(List<TransformerResolver> transformerResolvers) {
