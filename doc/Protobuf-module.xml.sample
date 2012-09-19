@@ -8,5 +8,9 @@
     <protobuf:serialize-to-byte-array />
 <!-- END_INCLUDE(protobuf:serialize-to-byte-array) -->
 <!-- BEGIN_INCLUDE(protobuf:builder) -->
-    <protobuf:builder />
+    <protobuf:builder protobufClass="org.mule.module.protocol.generated.Packet">
+        <protobuf:properties>
+            <protobuf:property key="message" value-ref="#[payload.message]"/>
+        </protobuf:properties>
+    </protobuf:builder>
 <!-- END_INCLUDE(protobuf:builder) -->
