@@ -73,41 +73,22 @@ public  final class Packet extends
     }
   }
   
-  // required string message = 2;
-  public static final int MESSAGE_FIELD_NUMBER = 2;
-  private java.lang.Object message_;
-  public boolean hasMessage() {
+  // required .Content content = 2;
+  public static final int CONTENT_FIELD_NUMBER = 2;
+  private org.mule.module.protocol.generated.Content content_;
+  public boolean hasContent() {
     return ((bitField0_ & 0x00000002) == 0x00000002);
   }
-  public String getMessage() {
-    java.lang.Object ref = message_;
-    if (ref instanceof String) {
-      return (String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      String s = bs.toStringUtf8();
-      if (com.google.protobuf.Internal.isValidUtf8(bs)) {
-        message_ = s;
-      }
-      return s;
-    }
+  public org.mule.module.protocol.generated.Content getContent() {
+    return content_;
   }
-  private com.google.protobuf.ByteString getMessageBytes() {
-    java.lang.Object ref = message_;
-    if (ref instanceof String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8((String) ref);
-      message_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public org.mule.module.protocol.generated.ContentOrBuilder getContentOrBuilder() {
+    return content_;
   }
   
   private void initFields() {
     dateTime_ = "";
-    message_ = "";
+    content_ = org.mule.module.protocol.generated.Content.getDefaultInstance();
   }
   private byte memoizedIsInitialized = -1;
   public final boolean isInitialized() {
@@ -118,7 +99,11 @@ public  final class Packet extends
       memoizedIsInitialized = 0;
       return false;
     }
-    if (!hasMessage()) {
+    if (!hasContent()) {
+      memoizedIsInitialized = 0;
+      return false;
+    }
+    if (!getContent().isInitialized()) {
       memoizedIsInitialized = 0;
       return false;
     }
@@ -133,7 +118,7 @@ public  final class Packet extends
       output.writeBytes(1, getDateTimeBytes());
     }
     if (((bitField0_ & 0x00000002) == 0x00000002)) {
-      output.writeBytes(2, getMessageBytes());
+      output.writeMessage(2, content_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -150,7 +135,7 @@ public  final class Packet extends
     }
     if (((bitField0_ & 0x00000002) == 0x00000002)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeBytesSize(2, getMessageBytes());
+        .computeMessageSize(2, content_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSerializedSize = size;
@@ -180,10 +165,10 @@ public  final class Packet extends
       result = result && getDateTime()
           .equals(other.getDateTime());
     }
-    result = result && (hasMessage() == other.hasMessage());
-    if (hasMessage()) {
-      result = result && getMessage()
-          .equals(other.getMessage());
+    result = result && (hasContent() == other.hasContent());
+    if (hasContent()) {
+      result = result && getContent()
+          .equals(other.getContent());
     }
     result = result &&
         getUnknownFields().equals(other.getUnknownFields());
@@ -198,9 +183,9 @@ public  final class Packet extends
       hash = (37 * hash) + DATETIME_FIELD_NUMBER;
       hash = (53 * hash) + getDateTime().hashCode();
     }
-    if (hasMessage()) {
-      hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
-      hash = (53 * hash) + getMessage().hashCode();
+    if (hasContent()) {
+      hash = (37 * hash) + CONTENT_FIELD_NUMBER;
+      hash = (53 * hash) + getContent().hashCode();
     }
     hash = (29 * hash) + getUnknownFields().hashCode();
     return hash;
@@ -310,6 +295,7 @@ public  final class Packet extends
     }
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        getContentFieldBuilder();
       }
     }
     private static Builder create() {
@@ -320,7 +306,11 @@ public  final class Packet extends
       super.clear();
       dateTime_ = "";
       bitField0_ = (bitField0_ & ~0x00000001);
-      message_ = "";
+      if (contentBuilder_ == null) {
+        content_ = org.mule.module.protocol.generated.Content.getDefaultInstance();
+      } else {
+        contentBuilder_.clear();
+      }
       bitField0_ = (bitField0_ & ~0x00000002);
       return this;
     }
@@ -367,7 +357,11 @@ public  final class Packet extends
       if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
         to_bitField0_ |= 0x00000002;
       }
-      result.message_ = message_;
+      if (contentBuilder_ == null) {
+        result.content_ = content_;
+      } else {
+        result.content_ = contentBuilder_.build();
+      }
       result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
@@ -387,8 +381,8 @@ public  final class Packet extends
       if (other.hasDateTime()) {
         setDateTime(other.getDateTime());
       }
-      if (other.hasMessage()) {
-        setMessage(other.getMessage());
+      if (other.hasContent()) {
+        mergeContent(other.getContent());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       return this;
@@ -399,7 +393,11 @@ public  final class Packet extends
         
         return false;
       }
-      if (!hasMessage()) {
+      if (!hasContent()) {
+        
+        return false;
+      }
+      if (!getContent().isInitialized()) {
         
         return false;
       }
@@ -435,8 +433,12 @@ public  final class Packet extends
             break;
           }
           case 18: {
-            bitField0_ |= 0x00000002;
-            message_ = input.readBytes();
+            org.mule.module.protocol.generated.Content.Builder subBuilder = org.mule.module.protocol.generated.Content.newBuilder();
+            if (hasContent()) {
+              subBuilder.mergeFrom(getContent());
+            }
+            input.readMessage(subBuilder, extensionRegistry);
+            setContent(subBuilder.buildPartial());
             break;
           }
         }
@@ -481,40 +483,94 @@ public  final class Packet extends
       onChanged();
     }
     
-    // required string message = 2;
-    private java.lang.Object message_ = "";
-    public boolean hasMessage() {
+    // required .Content content = 2;
+    private org.mule.module.protocol.generated.Content content_ = org.mule.module.protocol.generated.Content.getDefaultInstance();
+    private com.google.protobuf.SingleFieldBuilder<
+        org.mule.module.protocol.generated.Content, org.mule.module.protocol.generated.Content.Builder, org.mule.module.protocol.generated.ContentOrBuilder> contentBuilder_;
+    public boolean hasContent() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
-    public String getMessage() {
-      java.lang.Object ref = message_;
-      if (!(ref instanceof String)) {
-        String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
-        message_ = s;
-        return s;
+    public org.mule.module.protocol.generated.Content getContent() {
+      if (contentBuilder_ == null) {
+        return content_;
       } else {
-        return (String) ref;
+        return contentBuilder_.getMessage();
       }
     }
-    public Builder setMessage(String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-      message_ = value;
-      onChanged();
-      return this;
-    }
-    public Builder clearMessage() {
-      bitField0_ = (bitField0_ & ~0x00000002);
-      message_ = getDefaultInstance().getMessage();
-      onChanged();
-      return this;
-    }
-    void setMessage(com.google.protobuf.ByteString value) {
+    public Builder setContent(org.mule.module.protocol.generated.Content value) {
+      if (contentBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        content_ = value;
+        onChanged();
+      } else {
+        contentBuilder_.setMessage(value);
+      }
       bitField0_ |= 0x00000002;
-      message_ = value;
+      return this;
+    }
+    public Builder setContent(
+        org.mule.module.protocol.generated.Content.Builder builderForValue) {
+      if (contentBuilder_ == null) {
+        content_ = builderForValue.build();
+        onChanged();
+      } else {
+        contentBuilder_.setMessage(builderForValue.build());
+      }
+      bitField0_ |= 0x00000002;
+      return this;
+    }
+    public Builder mergeContent(org.mule.module.protocol.generated.Content value) {
+      if (contentBuilder_ == null) {
+        if (((bitField0_ & 0x00000002) == 0x00000002) &&
+            content_ != org.mule.module.protocol.generated.Content.getDefaultInstance()) {
+          content_ =
+            org.mule.module.protocol.generated.Content.newBuilder(content_).mergeFrom(value).buildPartial();
+        } else {
+          content_ = value;
+        }
+        onChanged();
+      } else {
+        contentBuilder_.mergeFrom(value);
+      }
+      bitField0_ |= 0x00000002;
+      return this;
+    }
+    public Builder clearContent() {
+      if (contentBuilder_ == null) {
+        content_ = org.mule.module.protocol.generated.Content.getDefaultInstance();
+        onChanged();
+      } else {
+        contentBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000002);
+      return this;
+    }
+    public org.mule.module.protocol.generated.Content.Builder getContentBuilder() {
+      bitField0_ |= 0x00000002;
       onChanged();
+      return getContentFieldBuilder().getBuilder();
+    }
+    public org.mule.module.protocol.generated.ContentOrBuilder getContentOrBuilder() {
+      if (contentBuilder_ != null) {
+        return contentBuilder_.getMessageOrBuilder();
+      } else {
+        return content_;
+      }
+    }
+    private com.google.protobuf.SingleFieldBuilder<
+        org.mule.module.protocol.generated.Content, org.mule.module.protocol.generated.Content.Builder, org.mule.module.protocol.generated.ContentOrBuilder> 
+        getContentFieldBuilder() {
+      if (contentBuilder_ == null) {
+        contentBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+            org.mule.module.protocol.generated.Content, org.mule.module.protocol.generated.Content.Builder, org.mule.module.protocol.generated.ContentOrBuilder>(
+                content_,
+                getParentForChildren(),
+                isClean());
+        content_ = null;
+      }
+      return contentBuilder_;
     }
     
     // @@protoc_insertion_point(builder_scope:Packet)

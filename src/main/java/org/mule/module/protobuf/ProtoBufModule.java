@@ -28,6 +28,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import org.apache.commons.beanutils.MethodUtils;
 import org.apache.commons.lang.StringUtils;
 
 /**
@@ -157,10 +158,13 @@ public class ProtoBufModule {
 
         Class clazz = Class.forName(protobufClass);
         Object builder = clazz.getDeclaredMethod("newBuilder").invoke(null);
-        Class builderClass = builder.getClass();
 
         for(Property property : properties) {
-            builderClass.getDeclaredMethod("set" + StringUtils.capitalize(property.getName()), property.getExpression().getClass()).invoke(builder, property.getExpression());
+            String prefix = "set";
+            if(property.getExpression() instanceof Iterable) {
+                prefix = "addAll";
+            }
+            MethodUtils.invokeMethod(builder, prefix + StringUtils.capitalize(property.getName()), new Object[] {property.getExpression()});
         }
 
         return ((Message.Builder) builder).build();

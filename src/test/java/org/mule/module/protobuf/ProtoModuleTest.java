@@ -15,6 +15,7 @@ import org.mule.api.MuleEvent;
 import org.mule.api.registry.TransformerResolver;
 import org.mule.api.transformer.Transformer;
 import org.mule.construct.Flow;
+import org.mule.module.protocol.generated.Content;
 import org.mule.module.protocol.generated.Packet;
 import org.mule.tck.junit4.FunctionalTestCase;
 import org.mule.transformer.types.DataTypeFactory;
@@ -44,7 +45,7 @@ public class ProtoModuleTest extends FunctionalTestCase {
 
     @Test
     public void testDeserialize() throws Exception {
-        Packet packet = Packet.newBuilder().setMessage(TEST_MESSAGE).setDateTime(ProtoBufModule.DATE_FORMAT.format(new Date())).build();
+        Packet packet = Packet.newBuilder().setContent(Content.newBuilder().setId(1234)).setDateTime(ProtoBufModule.DATE_FORMAT.format(new Date())).build();
         runFlowWithPayload("deserialize", packet, packet.toByteArray());
     }
 
@@ -60,14 +61,14 @@ public class ProtoModuleTest extends FunctionalTestCase {
 
     @Test
     public void testSerializeToInputStreamTransformer() throws Exception {
-        Packet packet = Packet.newBuilder().setMessage(TEST_MESSAGE).setDateTime(ProtoBufModule.DATE_FORMAT.format(new Date())).build();
+        Packet packet = Packet.newBuilder().setContent(Content.newBuilder().setId(1234)).setDateTime(ProtoBufModule.DATE_FORMAT.format(new Date())).build();
         MuleEvent response = runFlowWithPayload("serializeToInputStream", packet);
         assertEquals(packet, Packet.parseFrom((InputStream) response.getMessage().getPayload()));
     }
 
     @Test
     public void testSerializeToByteArrayTransformer() throws Exception {
-        Packet packet = Packet.newBuilder().setMessage(TEST_MESSAGE).setDateTime(ProtoBufModule.DATE_FORMAT.format(new Date())).build();
+        Packet packet = Packet.newBuilder().setContent(Content.newBuilder().setId(1234)).setDateTime(ProtoBufModule.DATE_FORMAT.format(new Date())).build();
         MuleEvent response = runFlowWithPayload("serializeToByteArray", packet);
         assertEquals(packet, Packet.parseFrom((byte[]) response.getMessage().getPayload()));
     }
@@ -75,13 +76,16 @@ public class ProtoModuleTest extends FunctionalTestCase {
     @Test
     public void testMessageBuilderTransformer() throws Exception {
         Message message = new Message();
-        message.setMessage(TEST_MESSAGE);
+        message.addUri("http://localhost:8080/demo");
+        message.addUri("http://localhost:8081/demo2");
+        message.setId(1234);
         message.setDateTime(new Date().toString());
         MuleEvent response = runFlowWithPayload("messageBuilderTransformer", message);
         assertTrue(response.getMessage().getPayload() instanceof Packet);
         Packet packet = (Packet) response.getMessage().getPayload();
-        assertEquals(message.getMessage(), packet.getMessage());
+        assertEquals(message.getId(), packet.getContent().getId());
         assertEquals(message.getDateTime(), packet.getDateTime());
+        assertEquals(message.getUris(), packet.getContent().getUrisList());
     }
 
     private boolean containsTransformerResolver(List<TransformerResolver> transformerResolvers) {

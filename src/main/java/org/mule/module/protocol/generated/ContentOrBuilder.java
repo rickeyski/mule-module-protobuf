@@ -12,15 +12,15 @@
 
 package org.mule.module.protocol.generated;
 
-public interface PacketOrBuilder
+public interface ContentOrBuilder
     extends com.google.protobuf.MessageOrBuilder {
   
-  // required string dateTime = 1;
-  boolean hasDateTime();
-  String getDateTime();
+  // required int64 id = 1;
+  boolean hasId();
+  long getId();
   
-  // required .Content content = 2;
-  boolean hasContent();
-  org.mule.module.protocol.generated.Content getContent();
-  org.mule.module.protocol.generated.ContentOrBuilder getContentOrBuilder();
+  // repeated string uris = 2;
+  java.util.List<String> getUrisList();
+  int getUrisCount();
+  String getUris(int index);
 }

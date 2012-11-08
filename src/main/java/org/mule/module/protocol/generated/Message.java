@@ -23,6 +23,11 @@ public final class Message {
   static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_Packet_fieldAccessorTable;
+  static com.google.protobuf.Descriptors.Descriptor
+    internal_static_Content_descriptor;
+  static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_Content_fieldAccessorTable;
   
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -32,9 +37,10 @@ public final class Message {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\rmessage.proto\"+\n\006Packet\022\020\n\010dateTime\030\001 " +
-      "\002(\t\022\017\n\007message\030\002 \002(\tB+\n\"org.mule.module." +
-      "protocol.generatedH\001P\001\240\001\001"
+      "\n\rmessage.proto\"5\n\006Packet\022\020\n\010dateTime\030\001 " +
+      "\002(\t\022\031\n\007content\030\002 \002(\0132\010.Content\"#\n\007Conten" +
+      "t\022\n\n\002id\030\001 \002(\003\022\014\n\004uris\030\002 \003(\tB+\n\"org.mule." +
+      "module.protocol.generatedH\001P\001\240\001\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -46,9 +52,17 @@ public final class Message {
           internal_static_Packet_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_Packet_descriptor,
-              new java.lang.String[] { "DateTime", "Message", },
+              new java.lang.String[] { "DateTime", "Content", },
               org.mule.module.protocol.generated.Packet.class,
               org.mule.module.protocol.generated.Packet.Builder.class);
+          internal_static_Content_descriptor =
+            getDescriptor().getMessageTypes().get(1);
+          internal_static_Content_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_Content_descriptor,
+              new java.lang.String[] { "Id", "Uris", },
+              org.mule.module.protocol.generated.Content.class,
+              org.mule.module.protocol.generated.Content.Builder.class);
           return null;
         }
       };

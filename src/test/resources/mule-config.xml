@@ -40,9 +40,19 @@
     </flow>
 
     <flow name="messageBuilderTransformer">
+
+        <enricher target="flowVars['content']">
+            <protobuf:builder protobufClass="org.mule.module.protocol.generated.Content">
+                <protobuf:properties>
+                    <protobuf:property name="id" expression-ref="#[payload.id]"/>
+                    <protobuf:property name="uris" expression-ref="#[[payload.uris[0], payload.uris[1]]]" />
+                </protobuf:properties>
+            </protobuf:builder>
+        </enricher>
+
         <protobuf:builder protobufClass="org.mule.module.protocol.generated.Packet">
             <protobuf:properties>
-                <protobuf:property name="message" expression-ref="#[payload.message]" />
+                <protobuf:property name="content" expression-ref="#[flowVars['content']]" />
                 <protobuf:property name="dateTime" expression-ref="#[payload.dateTime]" />
             </protobuf:properties>
         </protobuf:builder>

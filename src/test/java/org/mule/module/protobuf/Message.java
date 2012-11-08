@@ -11,17 +11,33 @@
 
 package org.mule.module.protobuf;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Message {
 
-    private String message;
+    private long id;
     private String dateTime;
+    private List<String> uris = new ArrayList<String>();
 
-    public String getMessage() {
-        return message;
+    public List<String> getUris() {
+        return uris;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void addUri(String uri) {
+        uris.add(uri);
+    }
+
+    public void setUris(List<String> uris) {
+        this.uris = uris;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getDateTime() {
