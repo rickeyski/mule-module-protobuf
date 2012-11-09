@@ -58,4 +58,13 @@
         </protobuf:builder>
     </flow>
 
+    <flow name="testSetCollection">
+        <protobuf:builder protobufClass="org.mule.module.protocol.generated.Content">
+            <protobuf:properties>
+                <protobuf:property name="id" expression-ref="#[payload.id]"/>
+                <protobuf:property name="uris" expression-ref="#[payload.uris[0]]"/>
+            </protobuf:properties>
+        </protobuf:builder>
+    </flow>
+
 </mule>

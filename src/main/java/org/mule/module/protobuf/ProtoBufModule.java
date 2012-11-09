@@ -23,6 +23,7 @@ import com.google.protobuf.Message;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -160,14 +161,35 @@ public class ProtoBufModule {
         Object builder = clazz.getDeclaredMethod("newBuilder").invoke(null);
 
         for(Property property : properties) {
-            String prefix = "set";
-            if(property.getExpression() instanceof Iterable) {
-                prefix = "addAll";
-            }
+            String prefix = getPrefix(property, clazz);
+
+
             MethodUtils.invokeMethod(builder, prefix + StringUtils.capitalize(property.getName()), new Object[] {property.getExpression()});
         }
 
         return ((Message.Builder) builder).build();
+    }
+
+    private String getPrefix(Property property, Class clazz) {
+
+        String prefix = "set";
+
+        try {
+            Field field = clazz.getDeclaredField(property.getName() + "_");
+            field.setAccessible(true);
+            if(Iterable.class.isAssignableFrom(field.getType())) {
+                if(property.getExpression() instanceof Iterable) {
+                    prefix = "addAll";
+                } else {
+                    prefix = "add";
+                }
+            }
+
+        } catch (NoSuchFieldException e) {
+            throw new IllegalArgumentException("There is no field named " + property.getName());
+        }
+
+        return prefix;
     }
 
 }

@@ -88,6 +88,19 @@ public class ProtoModuleTest extends FunctionalTestCase {
         assertEquals(message.getUris(), packet.getContent().getUrisList());
     }
 
+    @Test
+    public void testSetCollection() throws Exception {
+        Message message = new Message();
+        message.addUri("http://localhost:8080/demo");
+        message.setId(1234);
+
+        MuleEvent response = runFlowWithPayload("testSetCollection", message);
+        assertTrue(response.getMessage().getPayload() instanceof Content);
+        Content content = (Content) response.getMessage().getPayload();
+        assertEquals(message.getId(), content.getId());
+        assertEquals(message.getUris(), content.getUrisList());
+    }
+
     private boolean containsTransformerResolver(List<TransformerResolver> transformerResolvers) {
         for(TransformerResolver transformerResolver : transformerResolvers) {
             if(transformerResolver.getClass().getName().contains("ProtobufTransformerResolver")) {
