@@ -31,6 +31,9 @@ public class ProtobufToByteArray extends AbstractTransformer {
         if(src instanceof GeneratedMessage) {
             return ((GeneratedMessage) src).toByteArray();
         }
+        if(src instanceof byte[]) {
+            return src;
+        }
         return null;
     }
 }
