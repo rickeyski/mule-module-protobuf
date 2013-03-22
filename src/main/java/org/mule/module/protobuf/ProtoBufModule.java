@@ -102,6 +102,9 @@ public class ProtoBufModule {
         if(protobuf != null && protobuf instanceof GeneratedMessage) {
             return ((GeneratedMessage)protobuf).toByteArray();
         }
+        if(protobuf != null && protobuf instanceof byte[]) {
+            return (byte[]) protobuf;
+        }
         return null;
     }
 
